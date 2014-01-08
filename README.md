@@ -1,4 +1,6 @@
 CogniCity
 =========
 
-An Open Source GeoSocial Intelligence Framework
+**Open Source GeoSocial Intelligence Framework**
+
+*Coming soon...*
