@@ -1,0 +1,82 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+$font-family-base: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+// bower:scss
+@import '../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss';
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
+// endbower
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* Space out content a bit */
+body {
+    padding-bottom: 40px;
+}
+
+.navbar-light {
+    margin-bottom: 0;
+}
+
+#page-hero {
+    background: $brand-primary;
+    color: white;
+    padding: 50px 0;
+    margin-bottom: 20px;
+
+    h1 {
+        font-size: 72px;
+        font-weight: 400;
+    }
+
+    h4 {
+        font-size: 32px;
+        font-weight: 200;
+    }
+}
+
+#page-intro {
+    padding-bottom: 20px;
+    border-bottom: 1px #eee solid;
+}
+
+#features {
+    padding: 20px 0;
+    border-bottom: 1px #eee solid;
+    text-align: center;
+
+    p {
+        font-size:110%;
+    }
+}
+
+#github-link {
+    padding: 40px 0;
+    text-align: center;
+    border-bottom: 1px #eee solid;
+}
+
+#video {
+    padding: 20px 0;
+    border-bottom: 1px #eee solid;
+
+    .call-to-action {
+        padding-top: 14px;
+        text-align: center;
+    }
+}
+
+.btn-round {
+    &.btn-lg {
+        border-radius: 22px;
+    }
+}
+
+p {
+    font-size: 16px;
+}
