@@ -1,6 +1,7 @@
 $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 $font-family-base: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
+// $brand-primary: #16a085;
 
 // bower:scss
 @import '../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss';
@@ -16,11 +17,27 @@ $font-family-base: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 /* Space out content a bit */
 body {
+    padding-top: 50px;
     padding-bottom: 40px;
 }
 
-.navbar-light {
+.navbar-blend {
     margin-bottom: 0;
+    background: $brand-primary;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    a {
+        color: white;
+    }
+
+    .nav > li.active {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    button > span {
+        background-color: white;
+    }
 }
 
 #page-hero {
