@@ -31,8 +31,18 @@ body {
         color: white;
     }
 
-    .nav > li.active {
-        background: rgba(255, 255, 255, 0.2);
+    .nav {
+        > li.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        a {
+            -webkit-transition: all ease-in-out 0.1s;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
     }
 
     button > span {
