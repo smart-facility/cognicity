@@ -69,12 +69,18 @@ body {
         padding-top: 14px;
         text-align: center;
     }
+
+    @media screen and (max-width: $screen-md - 1) {
+        div:first-child {
+            margin-bottom: 24px;
+        }
+    }
 }
 
 .btn-round {
     &.btn-lg {
         border-radius: 22px;
-    }
+}
 }
 
 p {
