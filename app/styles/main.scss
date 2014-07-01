@@ -115,3 +115,19 @@ body {
 p {
     font-size: 16px;
 }
+
+#site-footer {
+    color: #777;
+    text-align: center;
+
+    display: block;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border-top: 1px solid #eee;
+    margin-top: 2em;
+
+    p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
