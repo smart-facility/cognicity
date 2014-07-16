@@ -21,6 +21,14 @@ body {
     padding-bottom: 40px;
 }
 
+.navbar {
+  .navbar-brand {
+    img {
+      max-height: 20px;
+    }
+  }
+}
+
 .navbar-blend {
     margin-bottom: 0;
     background: $brand-primary;
@@ -58,9 +66,9 @@ body {
     padding: 50px 0;
     margin-bottom: 20px;
 
-    h1 {
-        font-size: 72px;
-        font-weight: 400;
+    .logo {
+        height: 80px;
+        margin-bottom: 1em;
     }
 
     h4 {
@@ -129,5 +137,6 @@ p {
     p {
         font-size: 14px;
         line-height: 20px;
+        margin-bottom: 0;
     }
 }
