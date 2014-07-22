@@ -1,0 +1,1 @@
+"use strict";$(function(){$('iframe[src^="//player.vimeo.com"]').each(function(){$(this).data("aspectRatio",this.height/this.width).removeAttr("height").removeAttr("width")}),$(window).resize(function(){$('iframe[src^="//player.vimeo.com"]').each(function(){var a=$(this),b=a.parent().width();a.width(b).height(b*a.data("aspectRatio"))})}).resize()});
