@@ -1,0 +1,142 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+$font-family-base: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// $brand-primary: #16a085;
+
+// bower:scss
+@import '../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss';
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
+// endbower
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* Space out content a bit */
+body {
+    padding-top: 50px;
+    padding-bottom: 40px;
+}
+
+.navbar {
+  .navbar-brand {
+    img {
+      max-height: 20px;
+    }
+  }
+}
+
+.navbar-blend {
+    margin-bottom: 0;
+    background: $brand-primary;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    a {
+        color: white;
+    }
+
+    .nav {
+        > li.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        a {
+            -webkit-transition: all ease-in-out 0.1s;
+            transition: all ease-in-out 0.1s;
+
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+    }
+
+    button > span {
+        background-color: white;
+    }
+}
+
+#page-hero {
+    background: $brand-primary;
+    color: white;
+    padding: 50px 0;
+    margin-bottom: 20px;
+
+    .logo {
+        height: 80px;
+        margin-bottom: 1em;
+    }
+
+    h4 {
+        font-size: 32px;
+        font-weight: 200;
+    }
+}
+
+#page-intro {
+    padding-bottom: 20px;
+    border-bottom: 1px #eee solid;
+}
+
+#features {
+    padding: 20px 0;
+    border-bottom: 1px #eee solid;
+    text-align: center;
+
+    p {
+        font-size:110%;
+    }
+}
+
+#github-link {
+    padding: 40px 0;
+    text-align: center;
+    border-bottom: 1px #eee solid;
+}
+
+#video {
+    padding: 20px 0;
+    border-bottom: 1px #eee solid;
+
+    .call-to-action {
+        padding-top: 14px;
+        text-align: center;
+    }
+
+    @media screen and (max-width: $screen-md - 1) {
+        div:first-child {
+            margin-bottom: 24px;
+        }
+    }
+}
+
+.btn-round {
+    &.btn-lg {
+        border-radius: 22px;
+    }
+}
+
+p {
+    font-size: 16px;
+}
+
+#site-footer {
+    color: #777;
+    text-align: center;
+
+    display: block;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border-top: 1px solid #eee;
+    margin-top: 2em;
+
+    p {
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 0;
+    }
+}
