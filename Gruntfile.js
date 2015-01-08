@@ -193,8 +193,7 @@ module.exports = function (grunt) {
         // Automatically inject Bower components into the HTML file
         bowerInstall: {
             app: {
-                src: ['<%= config.app %>/index.html'],
-                exclude: ['bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js']
+                src: ['<%= config.app %>/index.html']
             },
             sass: {
                 src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}']
@@ -392,6 +391,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'bowerInstall',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
