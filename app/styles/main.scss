@@ -22,10 +22,12 @@ body {
     padding-bottom: 40px;
 }
 
+/* Set dimensions for small logo in menu bar */
 .navbar {
   .navbar-brand {
     img {
-      max-height: 20px;
+      height: 20px;
+      width: 82px;
     }
   }
 }
