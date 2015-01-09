@@ -16,7 +16,6 @@
     "grunt-bower-install": "~1.4.0",
     "grunt-contrib-imagemin": "~0.6.0",
     "grunt-contrib-watch": "~0.6.1",
-    "grunt-rev": "~0.1.0",
     "grunt-autoprefixer": "~0.7.2",
     "grunt-usemin": "~2.1.0",
     "grunt-mocha": "~0.4.10",

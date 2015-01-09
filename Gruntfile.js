@@ -200,21 +200,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // Renames files for browser caching purposes
-        rev: {
-            dist: {
-                files: {
-                    src: [
-                        '<%= config.dist %>/scripts/{,*/}*.js',
-                        '<%= config.dist %>/styles/{,*/}*.css',
-                        '<%= config.dist %>/images/{,*/}*.*',
-                        '<%= config.dist %>/styles/fonts/{,*/}*.*',
-                        '<%= config.dist %>/*.{ico,png}'
-                    ]
-                }
-            }
-        },
-
         // Reads HTML for usemin blocks to enable smart builds that automatically
         // concat, minify and revision files. Creates configurations in memory so
         // additional tasks can operate on them
@@ -225,7 +210,7 @@ module.exports = function (grunt) {
             html: '<%= config.app %>/index.html'
         },
 
-        // Performs rewrites based on rev and the useminPrepare configuration
+        // Performs rewrites based on the useminPrepare configuration
         usemin: {
             options: {
                 assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/images']
@@ -392,6 +377,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'bowerInstall',
+        'jshint',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
@@ -399,7 +385,6 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'copy:dist',
-        'rev',
         'usemin',
         'htmlmin'
     ]);
