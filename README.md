@@ -2,6 +2,8 @@
 
 This repository contains the project page for CogniCity, an open framework for urban data.
 
+[![Build Status](https://travis-ci.org/smart-facility/cognicity.svg)](https://travis-ci.org/smart-facility/cognicity)
+
 ## Building the Site
 
 This site is built using the Grunt task runner, which runs on the Node.js runtime. You'll need to set up a few dependencies to build the site locally, as well as perform other tasks like running tests.
