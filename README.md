@@ -36,3 +36,12 @@ We're using GitHub pages to host this site, so to publish a new build of the sit
 3. Back in the repository, switch to the `gh-pages` branch
 4. Delete the contents of the repo's folder and replace them with those in `dist`
 5. Commit the changes and push them to `origin`
+
+### Updating API Documentation
+
+The API documentation for the harvester and server is stored in this site so it's browsable over the web. To update the API documentation, follow these steps:
+
+1. Checkout the latest released tag for the harvester
+2. Run `npm run build-docs` in the harvester project
+3. Copy the output files from `docs/cognicity-reports-powertrack/VERSION/` into the cognicity project's folder `api-docs/cognicity-reports-powertrack`
+4. Follow the normal deployment process for `cognicity`
