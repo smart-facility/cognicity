@@ -12,17 +12,20 @@ This site is built using the Grunt task runner, which runs on the Node.js runtim
 
 1. Install and configure Node.js v0.10.29 and npm
 2. Install Grunt with `npm install grunt-cli -g`
-3. Bower requires git, if git is not already installed install it from http://git-scm.com/
-4. Install Bower with `npm install -g bower`
-5. Clone the project
-6. Run `npm install` to install build dependencies
-7. Run `bower install` to install site dependencies
+3. Clone the project
+4. Run `npm install` to install build dependencies
 
 ### Available Grunt Tasks
 
 - `grunt build` - build the site, placing the output in the `dist/` directory
 - `grunt serve` - Start a server and open the site in your default browser. Note the server uses LiveReload to refresh the page as you make changes.
 - `grunt clean` - Clean files and folders
+
+## Bower
+
+Bower is used to manage frontend asset dependencies - such as the Bootstrap UI library and the jQuery JavaScript library.
+
+Bower dependencies are automatically installed as part of the grunt build process and references to the dependencies are injected into the appropriate places in the source HTML.
 
 ## Deploying the Site
 

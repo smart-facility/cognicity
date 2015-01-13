@@ -190,6 +190,23 @@ module.exports = function (grunt) {
             }
         },
 
+        // Fetch bower dependencies and put them in the 'bower_components' directory
+        'bower-install-simple': {
+            options: {
+                color: true
+            },
+            // For the root app
+            'app': {
+                options: {}
+            },
+            // For the test subfolder
+            'test': {
+                options: {
+                    cwd: 'test'
+                }
+            }
+        },
+        
         // Automatically inject Bower components into the HTML file
         bowerInstall: {
             app: {
@@ -364,6 +381,7 @@ module.exports = function (grunt) {
         if (target !== 'watch') {
             grunt.task.run([
                 'clean:server',
+                'bower-install-simple:test',
                 'concurrent:test',
                 'autoprefixer'
             ]);
@@ -377,6 +395,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'bower-install-simple:app',
         'bowerInstall',
         'jshint',
         'useminPrepare',

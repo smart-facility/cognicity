@@ -4,6 +4,7 @@
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.13",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-uglify": "~0.4.0",
@@ -14,6 +15,7 @@
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-htmlmin": "~0.2.0",
     "grunt-bower-install": "~1.4.0",
+    "grunt-bower-install-simple": "~1.1.0",
     "grunt-contrib-imagemin": "~0.6.0",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-autoprefixer": "~0.7.2",
@@ -30,6 +32,6 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "bower install && grunt build"
+    "test": "grunt build && grunt test"
   }
 }
