@@ -21,11 +21,21 @@ This site is built using the Grunt task runner, which runs on the Node.js runtim
 - `grunt serve` - Start a server and open the site in your default browser. Note the server uses LiveReload to refresh the page as you make changes.
 - `grunt clean` - Clean files and folders
 
-## Bower
+## Dependencies
+
+### Bower
 
 Bower is used to manage frontend asset dependencies - such as the Bootstrap UI library and the jQuery JavaScript library.
 
 Bower dependencies are automatically installed as part of the grunt build process and references to the dependencies are injected into the appropriate places in the source HTML.
+
+#### Bootstrap
+
+Bootstrap is a UI framework which is a Bower dependency.
+
+#### jQuery
+
+jQuery is a JavaScript library which is a Bower dependency.
 
 ## Deploying the Site
 
@@ -39,9 +49,10 @@ We're using GitHub pages to host this site, so to publish a new build of the sit
 
 ### Updating API Documentation
 
-The API documentation for the harvester and server is stored in this site so it's browsable over the web. To update the API documentation, follow these steps:
+The rendered API documentation for the harvester and server is stored within this site. To update the API documentation, follow these steps:
 
 1. Checkout the latest released tag for the harvester
 2. Run `npm run build-docs` in the harvester project
 3. Copy the output files from `docs/cognicity-reports-powertrack/VERSION/` into the cognicity project's folder `api-docs/cognicity-reports-powertrack`
-4. Follow the normal deployment process for `cognicity`
+
+Now follow the normal deployment process for `cognicity` to deploy the updated API documentation.
