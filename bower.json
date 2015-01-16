@@ -2,8 +2,9 @@
   "name": "cognicity-web",
   "private": true,
   "dependencies": {
+    // Rendered site is broken with Bootstrap 3.3, stick with 3.1.x until we upgrade the source 
     "bootstrap-sass-official": "~3.1.0",
-    "jquery": "~1.11.0"
+    "jquery": "^1.11.0"
   },
   "devDependencies": {}
 }
