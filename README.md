@@ -62,7 +62,19 @@ Bower dependencies are automatically installed as part of the grunt build proces
 * [mocha](https://github.com/mochajs/mocha) version 1.14.0 or compatible 
 * [chai](https://github.com/chaijs/chai) version 1.8.0 or compatible
 
-## Deploying the Site
+## Development
+
+### Git Hooks
+
+There is a git pre-commit hook which will run the 'npm test' command before your commit and will fail the commit if testing fails.
+
+To use this hook, copy the file from 'git-hooks/pre-commit' to '.git/hooks/pre-commit' in your project folder.
+
+```shell
+cp git-hooks/pre-commit .git/hooks/
+```
+
+### Deploying the Site
 
 We're using GitHub pages to host this site, so to publish a new build of the site, you just have to push it to GitHub:
 
@@ -72,7 +84,7 @@ We're using GitHub pages to host this site, so to publish a new build of the sit
 4. Delete the contents of the repo's folder and replace them with those in `dist`
 5. Commit the changes and push them to `origin`
 
-### Updating API Documentation
+#### Updating API Documentation
 
 The rendered API documentation for the harvester and server is stored within this site. To update the API documentation, follow these steps:
 
