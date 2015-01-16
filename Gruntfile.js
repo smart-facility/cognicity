@@ -32,7 +32,7 @@ module.exports = function (grunt) {
         watch: {
             bower: {
                 files: ['bower.json'],
-                tasks: ['bowerInstall', 'bower-install-simple:app']
+                tasks: ['wiredep', 'bower-install-simple:app']
             },
             js: {
                 files: ['<%= config.app %>/scripts/{,*/}*.js'],
@@ -199,7 +199,6 @@ module.exports = function (grunt) {
 
         // This plugin does the equivalent of a 'bower install', fetching the bower dependencies defined
         // in the bower.json file and putting them in the 'bower_components' directory
-        // Not to be confused with 'bowerInstall' which wires up the bower depdendencies in the generated files
         'bower-install-simple': {
             options: {
                 color: true
@@ -218,8 +217,7 @@ module.exports = function (grunt) {
         
         // Automatically inject Bower components into the HTML file
         // This task wires up the bower dependencies into the HTML and CSS output files
-        // Not to be confused with 'bower-install-simple' which downloads the bower dependencies based on the bower configuration
-        bowerInstall: {
+        wiredep: {
             app: {
                 src: ['<%= config.app %>/index.html']
             },
@@ -411,7 +409,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'bower-install-simple:app',
-        'bowerInstall',
+        'wiredep',
         'jshint',
         'useminPrepare',
         'concurrent:dist',

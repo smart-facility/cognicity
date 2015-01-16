@@ -34,7 +34,7 @@ This site is built using the Grunt task runner, which runs on the Node.js runtim
 * [grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect) version 0.7.1 or compatible
 * [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) version 0.5.0 or compatible
 * [grunt-contrib-htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin) version 0.2.0 or compatible
-* [grunt-bower-install](https://github.com/stephenplusplus/grunt-wiredep) version 1.4.0 or compatible
+* [grunt-wiredep](https://github.com/stephenplusplus/grunt-wiredep) version 2.0.0 or compatible
 * [grunt-bower-install-simple](https://github.com/rse/grunt-bower-install-simple) version 1.1.0 or compatible
 * [grunt-contrib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin) version 0.6.0 or compatible
 * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch) version 0.6.1 or compatible
