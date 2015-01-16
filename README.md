@@ -23,19 +23,44 @@ This site is built using the Grunt task runner, which runs on the Node.js runtim
 
 ## Dependencies
 
+### NPM Development Modules
+* [grunt](https://github.com/gruntjs/grunt) version 0.4.1 or compatible
+* [grunt-contrib-copy](https://github.com/gruntjs/grunt-contrib-copy) version 0.5.0 or compatible
+* [grunt-contrib-concat](https://github.com/gruntjs/grunt-contrib-concat) version 0.3.0 or compatible
+* [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify) version 0.4.0 or compatible
+* [grunt-sass](https://github.com/sindresorhus/grunt-sass) version 0.11.0 or compatible
+* [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint) version 0.9.2 or compatible
+* [grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin) version 0.9.0 or compatible
+* [grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect) version 0.7.1 or compatible
+* [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean) version 0.5.0 or compatible
+* [grunt-contrib-htmlmin](https://github.com/gruntjs/grunt-contrib-htmlmin) version 0.2.0 or compatible
+* [grunt-bower-install](https://github.com/stephenplusplus/grunt-wiredep) version 1.4.0 or compatible
+* [grunt-bower-install-simple](https://github.com/rse/grunt-bower-install-simple) version 1.1.0 or compatible
+* [grunt-contrib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin) version 0.6.0 or compatible
+* [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch) version 0.6.1 or compatible
+* [grunt-autoprefixer](https://github.com/nDmitry/grunt-autoprefixer) version 0.7.2 or compatible
+* [grunt-usemin](https://github.com/yeoman/grunt-usemin) version 2.1.0 or compatible
+* [grunt-mocha](https://github.com/kmiyashiro/grunt-mocha) version 0.4.10 or compatible
+* [grunt-newer](https://github.com/tschaub/grunt-newer) version 0.7.0 or compatible
+* [grunt-svgmin](https://github.com/sindresorhus/grunt-svgmin) version 2.0.0 or compatible
+* [grunt-concurrent](https://github.com/sindresorhus/grunt-concurrent) version 0.5.0 or compatible
+* [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks) version 0.4.0 or compatible
+* [time-grunt](https://github.com/sindresorhus/time-grunt) version 0.3.1 or compatible
+* [jshint-stylish](https://github.com/sindresorhus/jshint-stylish) version 0.1.5 or compatible
+
 ### Bower
 
 Bower is used to manage frontend asset dependencies - such as the Bootstrap UI library and the jQuery JavaScript library.
 
 Bower dependencies are automatically installed as part of the grunt build process and references to the dependencies are injected into the appropriate places in the source HTML.
 
-#### Bootstrap
+#### Bower Dependencies
+* [bootstrap-sass-official](https://github.com/twbs/bootstrap-sass) version 3.1.x
+* [jquery](https://github.com/jquery/jquery) version 1.11.0 or compatible
 
-Bootstrap is a UI framework which is a Bower dependency.
-
-#### jQuery
-
-jQuery is a JavaScript library which is a Bower dependency.
+#### Bower Test Dependencies
+* [mocha](https://github.com/mochajs/mocha) version 1.14.0 or compatible 
+* [chai](https://github.com/chaijs/chai) version 1.8.0 or compatible
 
 ## Deploying the Site
 
