@@ -1,11 +1,12 @@
-$icon-font-path: "/cognicity/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 $font-family-base: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 // $brand-primary: #16a085;
 
-// bower:scss
-@import '../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss';
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
+
+// bower:scss
+@import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
 .browsehappy {
@@ -21,10 +22,12 @@ body {
     padding-bottom: 40px;
 }
 
+/* Set dimensions for small logo in menu bar */
 .navbar {
   .navbar-brand {
     img {
-      max-height: 20px;
+      height: 20px;
+      width: 82px;
     }
   }
 }

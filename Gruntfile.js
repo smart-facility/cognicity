@@ -28,10 +28,11 @@ module.exports = function (grunt) {
         config: config,
 
         // Watches files for changes and runs tasks based on the changed files
+        // This is used when running 'grunt serve'
         watch: {
             bower: {
                 files: ['bower.json'],
-                tasks: ['bowerInstall']
+                tasks: ['wiredep', 'bower-install-simple:app']
             },
             js: {
                 files: ['<%= config.app %>/scripts/{,*/}*.js'],
@@ -67,7 +68,7 @@ module.exports = function (grunt) {
             }
         },
 
-        // The actual grunt server settings
+        // The actual grunt server settings, used for 'grunt serve'
         connect: {
             options: {
                 port: 9000,
@@ -125,6 +126,7 @@ module.exports = function (grunt) {
         },
 
         // Make sure code styles are up to par and there are no obvious mistakes
+        // Run as part of the build process
         jshint: {
             options: {
                 jshintrc: '.jshintrc',
@@ -139,6 +141,7 @@ module.exports = function (grunt) {
         },
 
         // Mocha testing framework configuration options
+        // This is run from 'grunt test'
         mocha: {
             all: {
                 options: {
@@ -149,6 +152,7 @@ module.exports = function (grunt) {
         },
 
         // Compiles Sass to CSS and generates necessary files if requested
+        // We define our own styles in Sass and include Bootstrap's Sass
         sass: {
             options: {
                 includePaths: [
@@ -176,8 +180,11 @@ module.exports = function (grunt) {
         },
 
         // Add vendor prefixed styles
+        // This re-writes the output CSS and adds vendor-specific CSS rules if they are needed
+        // I.e., we might add -moz-border-radius if we see a border-radius property
         autoprefixer: {
             options: {
+                // Only target the previous version of browsers for our rewriting
                 browsers: ['last 1 version']
             },
             dist: {
@@ -190,29 +197,32 @@ module.exports = function (grunt) {
             }
         },
 
+        // This plugin does the equivalent of a 'bower install', fetching the bower dependencies defined
+        // in the bower.json file and putting them in the 'bower_components' directory
+        'bower-install-simple': {
+            options: {
+                color: true
+            },
+            // For the root app
+            'app': {
+                options: {}
+            },
+            // For the test subfolder
+            'test': {
+                options: {
+                    cwd: 'test'
+                }
+            }
+        },
+        
         // Automatically inject Bower components into the HTML file
-        bowerInstall: {
+        // This task wires up the bower dependencies into the HTML and CSS output files
+        wiredep: {
             app: {
-                src: ['<%= config.app %>/index.html'],
-                exclude: ['bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js']
+                src: ['<%= config.app %>/index.html']
             },
             sass: {
                 src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}']
-            }
-        },
-
-        // Renames files for browser caching purposes
-        rev: {
-            dist: {
-                files: {
-                    src: [
-                        '<%= config.dist %>/scripts/{,*/}*.js',
-                        '<%= config.dist %>/styles/{,*/}*.css',
-                        '<%= config.dist %>/images/{,*/}*.*',
-                        '<%= config.dist %>/styles/fonts/{,*/}*.*',
-                        '<%= config.dist %>/*.{ico,png}'
-                    ]
-                }
             }
         },
 
@@ -226,7 +236,7 @@ module.exports = function (grunt) {
             html: '<%= config.app %>/index.html'
         },
 
-        // Performs rewrites based on rev and the useminPrepare configuration
+        // Performs rewrites based on the useminPrepare configuration
         usemin: {
             options: {
                 assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/images']
@@ -309,6 +319,7 @@ module.exports = function (grunt) {
         copy: {
             dist: {
                 files: [{
+                    // Copy all our source files from 'app' to the output folder
                     expand: true,
                     dot: true,
                     cwd: '<%= config.app %>',
@@ -318,9 +329,11 @@ module.exports = function (grunt) {
                         '.htaccess',
                         'images/{,*/}*.webp',
                         '{,*/}*.html',
-                        'styles/fonts/{,*/}*.*'
+                        'styles/fonts/{,*/}*.*',
+                        'api-docs/**/*'
                     ]
                 }, {
+                    // Copy the bootstrap fonts - which are not automatically copied by the bower dependency - into the output folder
                     expand: true,
                     dot: true,
                     cwd: '.',
@@ -355,7 +368,7 @@ module.exports = function (grunt) {
         }
     });
 
-
+    // Launch a local server, serving the files  and watching for changes
     grunt.registerTask('serve', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'connect:dist:keepalive']);
@@ -375,10 +388,12 @@ module.exports = function (grunt) {
         grunt.task.run([target ? ('serve:' + target) : 'serve']);
     });
 
+    // Run the test harness and mocha tests from the 'test' folder
     grunt.registerTask('test', function (target) {
         if (target !== 'watch') {
             grunt.task.run([
                 'clean:server',
+                'bower-install-simple:test',
                 'concurrent:test',
                 'autoprefixer'
             ]);
@@ -390,8 +405,12 @@ module.exports = function (grunt) {
         ]);
     });
 
+    // Do a full build of the site - the output will be placed in the 'dist' folder
     grunt.registerTask('build', [
         'clean:dist',
+        'bower-install-simple:app',
+        'wiredep',
+        'jshint',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
@@ -399,14 +418,13 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'copy:dist',
-        'rev',
         'usemin',
         'htmlmin'
     ]);
 
+    // Run with no arguments, build and test
     grunt.registerTask('default', [
-        'newer:jshint',
-        'test',
-        'build'
+        'build',
+        'test'
     ]);
 };
