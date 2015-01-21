@@ -23,54 +23,45 @@
 
 
 
-
 <section>
 
 <header>
-    
-        <h2>
-        CognicityReportsPowertrack
-        </h2>
-        
+    <h2>
+    CognicityReportsPowertrack
+    </h2>
     
 </header>
 
 <article>
     <div class="container-overview">
     
+
+    
         
-
-    
-    <h2>Constructor</h2>
-    
-
+<dt>
     <h4 class="name" id="CognicityReportsPowertrack"><span class="type-signature"></span>new CognicityReportsPowertrack<span class="signature">(config, twit, pg, logger, Gnip)</span><span class="type-signature"></span></h4>
 
     
+</dt>
+<dd>
 
-
-
-<div class="description">
-    A CognicityReportsPowertrack object:
+    
+    <div class="description">
+        A CognicityReportsPowertrack object:
 - connects to a powertrack stream
 - monitors tweets based on configuration
 - sends messages to users via twitter
 - stores data from tweets in database
-</div>
-
-
-
-
-
-
-
-    <h5>This:</h5>
-    <ul><li>{<a href="CognicityReportsPowertrack.html">CognicityReportsPowertrack</a>}</li></ul>
-
-
-
-    <h5>Parameters:</h5>
+    </div>
     
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -100,7 +91,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="config.html">config</a></span>
 
 
             
@@ -123,7 +114,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -146,7 +137,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -169,7 +160,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -192,7 +183,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -208,19 +199,10 @@
     
     </tbody>
 </table>
+    
 
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -242,7 +224,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line19">line 19</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -254,22 +236,25 @@
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
+    
+</dd>
 
     
     </div>
+
+    
 
     
 
@@ -284,41 +269,34 @@
     
         <h3 class="subsection-title">Members</h3>
 
-        
+        <dl>
             
-<h4 class="name" id="_cachedTweets"><span class="type-signature"></span>_cachedTweets<span class="type-signature"> :Array</span></h4>
+<dt>
+    <h4 class="name" id="_cachedTweets"><span class="type-signature"></span>_cachedTweets<span class="type-signature"> :Array</span></h4>
 
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Store tweets if we cannot process them immediately, for later processing.
+    </div>
+    
 
-
-
-<div class="description">
-    Store tweets if we cannot process them immediately for later processing.
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
 <span class="param-type">Array</span>
 
 
-        </li>
-    </ul>
+            </li>
+        </ul>
+    
 
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -340,7 +318,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line70">line 70</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line69">line 69</a>
     </li></ul></dd>
     
 
@@ -352,46 +330,40 @@
 </dl>
 
 
+    
 
-
-
+    
+</dd>
 
         
             
-<h4 class="name" id="_cacheMode"><span class="type-signature"></span>_cacheMode<span class="type-signature"> :Boolean</span></h4>
+<dt>
+    <h4 class="name" id="_cacheMode"><span class="type-signature"></span>_cacheMode<span class="type-signature"> :boolean</span></h4>
 
-
-
-
-<div class="description">
-    Flag signifying if we are currently able to process tweets immediately.
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Flag signifying if we are currently able to process tweets immediately.
 Turned on if the database is temporarily offline so we can cache tweets for a short time.
-</div>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">boolean</span>
 
 
+            </li>
+        </ul>
+    
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Boolean</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -413,7 +385,7 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line65">line 65</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line64">line 64</a>
     </li></ul></dd>
     
 
@@ -425,45 +397,39 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
 </dl>
 
 
+    
 
-
-
+    
+</dd>
 
         
             
-<h4 class="name" id="config"><span class="type-signature"></span>config<span class="type-signature"> :Object</span></h4>
+<dt>
+    <h4 class="name" id="config"><span class="type-signature"></span>config<span class="type-signature"> :<a href="config.html">config</a></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Configuration object
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type"><a href="config.html">config</a></span>
 
 
+            </li>
+        </ul>
+    
 
-
-<div class="description">
-    Configuration object containing properties read from config file
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -485,7 +451,7 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line39">line 39</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -497,45 +463,39 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
 </dl>
 
 
+    
 
-
-
+    
+</dd>
 
         
             
-<h4 class="name" id="Gnip"><span class="type-signature"></span>Gnip<span class="type-signature"> :Object</span></h4>
+<dt>
+    <h4 class="name" id="Gnip"><span class="type-signature"></span>Gnip<span class="type-signature"> :object</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Instance of Gnip object from Gnip module
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
 
 
+            </li>
+        </ul>
+    
 
-
-<div class="description">
-    Gnip Instance of Gnip object from Gnip module
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -557,7 +517,7 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line59">line 59</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line58">line 58</a>
     </li></ul></dd>
     
 
@@ -569,45 +529,39 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
 </dl>
 
 
+    
 
-
-
+    
+</dd>
 
         
             
-<h4 class="name" id="logger"><span class="type-signature"></span>logger<span class="type-signature"> :Object</span></h4>
+<dt>
+    <h4 class="name" id="logger"><span class="type-signature"></span>logger<span class="type-signature"> :object</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Configured instance of logger object from Winston module
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
 
 
+            </li>
+        </ul>
+    
 
-
-<div class="description">
-    Configured instance of logger object from Winston module
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -629,7 +583,7 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line54">line 54</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -641,45 +595,39 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
 </dl>
 
 
+    
 
-
-
+    
+</dd>
 
         
             
-<h4 class="name" id="pg"><span class="type-signature"></span>pg<span class="type-signature"> :Object</span></h4>
+<dt>
+    <h4 class="name" id="pg"><span class="type-signature"></span>pg<span class="type-signature"> :object</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Configured instance of pg object from pg module
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
 
 
+            </li>
+        </ul>
+    
 
-
-<div class="description">
-    Configured instance of pg object from pg module
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -701,7 +649,7 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line49">line 49</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line48">line 48</a>
     </li></ul></dd>
     
 
@@ -713,45 +661,39 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
 </dl>
 
 
+    
 
-
-
+    
+</dd>
 
         
             
-<h4 class="name" id="twit"><span class="type-signature"></span>twit<span class="type-signature"> :Object</span></h4>
+<dt>
+    <h4 class="name" id="twit"><span class="type-signature"></span>twit<span class="type-signature"> :object</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Configured instance of twitter object from ntwitter module
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
 
 
+            </li>
+        </ul>
+    
 
-
-<div class="description">
-    Configured instance of twitter object from ntwitter module
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -773,7 +715,7 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line44">line 44</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -785,54 +727,41 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-        
+        </dl>
     
 
     
         <h3 class="subsection-title">Methods</h3>
 
-        
+        <dl>
             
+<dt>
+    <h4 class="name" id="areTweetMessageLengthsOk"><span class="type-signature"></span>areTweetMessageLengthsOk<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-
-    <h4 class="name" id="areTweetMessageLengthsOk"><span class="type-signature"></span>areTweetMessageLengthsOk<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+</dt>
+<dd>
 
     
-
-
-
-<div class="description">
-    Check that all tweetable message texts are of an acceptable length.
+    <div class="description">
+        Check that all tweetable message texts are of an acceptable length.
 This is 109 characters max if timestamps are enabled, or 123 characters max if timestamps are not enabled.
-Ref: https://dev.twitter.com/overview/api/counting-characters (max tweet = 140 chars)
-Ref: https://support.twitter.com/articles/14609-changing-your-username (max username = 15 chars)
-</div>
+    </div>
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -854,32 +783,41 @@ Ref: https://support.twitter.com/articles/14609-changing-your-username (max user
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line638">line 638</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line645">line 645</a>
     </li></ul></dd>
     
 
     
 
     
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://dev.twitter.com/overview/api/counting-characters">https://dev.twitter.com/overview/api/counting-characters</a> (max tweet = 140 chars)</li>
+        
+            <li><a href="https://support.twitter.com/articles/14609-changing-your-username">https://support.twitter.com/articles/14609-changing-your-username</a> (max username = 15 chars)</li>
+        </ul>
+    </dd>
+    
 
     
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     True if message texts are all okay, false if any are not.
 </div>
@@ -892,54 +830,43 @@ Ref: https://support.twitter.com/articles/14609-changing-your-username (max user
     </dt>
     <dd>
         
-<span class="param-type">Boolean</span>
+<span class="param-type">boolean</span>
 
 
     </dd>
 </dl>
 
+        
+
     
-
-
+</dd>
 
         
             
-
-    
-
+<dt>
     <h4 class="name" id="connectStream"><span class="type-signature"></span>connectStream<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
+</dt>
+<dd>
 
-
-
-<div class="description">
-    Connect the Gnip stream.
+    
+    <div class="description">
+        Connect the Gnip stream.
 Establish the network connection, push rules to Gnip.
 Setup error handlers and timeout handler.
 Handle events from the stream on incoming data.
-</div>
+    </div>
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -961,7 +888,7 @@ Handle events from the stream on incoming data.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line436">line 436</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line443">line 443</a>
     </li></ul></dd>
     
 
@@ -973,45 +900,43 @@ Handle events from the stream on incoming data.
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
+    
+</dd>
 
         
             
-
-    
-
+<dt>
     <h4 class="name" id="dbQuery"><span class="type-signature"></span>dbQuery<span class="signature">(config, success)</span><span class="type-signature"></span></h4>
 
     
+</dt>
+<dd>
 
-
-
-<div class="description">
-    Execute the SQL against the database connection. Run the success callback on success if supplied.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
     
+    <div class="description">
+        Execute the SQL against the database connection. Run the success callback on success if supplied.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -1041,7 +966,7 @@ Handle events from the stream on incoming data.
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -1051,7 +976,78 @@ Handle events from the stream on incoming data.
 
             
 
-            <td class="description last">The pg config object for a parameterized query, e.g. {text:"select * from foo where a=$1", values:['bar']}</td>
+            <td class="description last">The pg config object for a parameterized query, e.g. {text:"select * from foo where a=$1", values:['bar']}
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The SQL query to execute</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>values</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Parameterized values to use for the SQL query</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+            </td>
         </tr>
 
     
@@ -1064,7 +1060,7 @@ Handle events from the stream on incoming data.
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#dbQuerySuccess">dbQuerySuccess</a></span>
+<span class="param-type"><a href="global.html#DbQuerySuccess">DbQuerySuccess</a></span>
 
 
             
@@ -1080,19 +1076,10 @@ Handle events from the stream on incoming data.
     
     </tbody>
 </table>
+    
 
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -1114,7 +1101,7 @@ Handle events from the stream on incoming data.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line112">line 112</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line119">line 119</a>
     </li></ul></dd>
     
 
@@ -1126,56 +1113,45 @@ Handle events from the stream on incoming data.
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
+    
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="disableCacheMode"><span class="type-signature"></span>disableCacheMode<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
+</dt>
+<dd>
 
-
-
-<div class="description">
-    Resume realtime processing of tweets.
+    
+    <div class="description">
+        Resume realtime processing of tweets.
 Also immediately process any tweets cached while caching mode was enabled.
-</div>
+    </div>
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -1197,7 +1173,7 @@ Also immediately process any tweets cached while caching mode was enabled.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line590">line 590</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line597">line 597</a>
     </li></ul></dd>
     
 
@@ -1209,55 +1185,44 @@ Also immediately process any tweets cached while caching mode was enabled.
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
+    
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="enableCacheMode"><span class="type-signature"></span>enableCacheMode<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
+</dt>
+<dd>
 
+    
+    <div class="description">
+        Stop realtime processing of tweets and start caching tweets until caching mode is disabled.
+    </div>
+    
 
+    
 
-<div class="description">
-    Stop realtime processing of tweets and start caching tweets until caching mode is disabled.
-</div>
+    
 
+    
 
-
-
-
-
-
-
-
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -1279,7 +1244,7 @@ Also immediately process any tweets cached while caching mode was enabled.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line579">line 579</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line586">line 586</a>
     </li></ul></dd>
     
 
@@ -1291,47 +1256,45 @@ Also immediately process any tweets cached while caching mode was enabled.
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
+    
+</dd>
 
         
             
-
-    
-
+<dt>
     <h4 class="name" id="filter"><span class="type-signature"></span>filter<span class="signature">(tweetActivity)</span><span class="type-signature"></span></h4>
 
     
+</dt>
+<dd>
 
-
-
-<div class="description">
-    Main stream tweet filtering logic.
+    
+    <div class="description">
+        Main stream tweet filtering logic.
 Filter the incoming tweet and decide what action needs to be taken:
 confirmed report, ask for geo, ask user to participate, or nothing
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
+    </div>
     
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -1361,7 +1324,7 @@ confirmed report, ask for geo, ask user to participate, or nothing
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#GnipTweetActivity">GnipTweetActivity</a></span>
 
 
             
@@ -1377,19 +1340,10 @@ confirmed report, ask for geo, ask user to participate, or nothing
     
     </tbody>
 </table>
+    
 
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -1411,7 +1365,7 @@ confirmed report, ask for geo, ask user to participate, or nothing
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line360">line 360</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line367">line 367</a>
     </li></ul></dd>
     
 
@@ -1423,46 +1377,44 @@ confirmed report, ask for geo, ask user to participate, or nothing
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
+    
+</dd>
 
         
             
+<dt>
+    <h4 class="name" id="getMessage"><span class="type-signature"></span>getMessage<span class="signature">(code, tweetActivity)</span><span class="type-signature"> &rarr; (nullable) {string}</span></h4>
 
     
-
-    <h4 class="name" id="getMessage"><span class="type-signature"></span>getMessage<span class="signature">(code, tweetActivity)</span><span class="type-signature"> &rarr; {String}</span></h4>
+</dt>
+<dd>
 
     
-
-
-
-<div class="description">
-    Resolve message code from config.twitter using passed language codes.
+    <div class="description">
+        Resolve message code from config.twitter using passed language codes.
 Will fall back to trying to resolve message using default language set in configuration.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
+    </div>
     
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -1492,7 +1444,7 @@ Will fall back to trying to resolve message using default language set in config
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">string</span>
 
 
             
@@ -1502,7 +1454,7 @@ Will fall back to trying to resolve message using default language set in config
 
             
 
-            <td class="description last">Code to lookup in config.twitter</td>
+            <td class="description last">Message code to lookup in config.twitter</td>
         </tr>
 
     
@@ -1515,7 +1467,7 @@ Will fall back to trying to resolve message using default language set in config
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#GnipTweetActivity">GnipTweetActivity</a></span>
 
 
             
@@ -1525,25 +1477,16 @@ Will fall back to trying to resolve message using default language set in config
 
             
 
-            <td class="description last">Gnip twitter activity object; check twitter language code and Gnip language codes for a match</td>
+            <td class="description last">Tweet activity object; check twitter language code and Gnip language codes for a match</td>
         </tr>
 
     
     </tbody>
 </table>
+    
 
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -1565,7 +1508,7 @@ Will fall back to trying to resolve message using default language set in config
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line79">line 79</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line78">line 78</a>
     </li></ul></dd>
     
 
@@ -1577,20 +1520,20 @@ Will fall back to trying to resolve message using default language set in config
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
+    
+    <h5>Returns:</h5>
+    
+            
 <div class="param-desc">
     Message text, or null if not resolved.
 </div>
@@ -1603,41 +1546,39 @@ Will fall back to trying to resolve message using default language set in config
     </dt>
     <dd>
         
-<span class="param-type">String</span>
+<span class="param-type">string</span>
 
 
     </dd>
 </dl>
 
+        
+
     
-
-
+</dd>
 
         
             
-
-    
-
+<dt>
     <h4 class="name" id="ifNewUser"><span class="type-signature"></span>ifNewUser<span class="signature">(user, callback)</span><span class="type-signature"></span></h4>
 
     
+</dt>
+<dd>
 
-
-
-<div class="description">
-    Only execute the success callback if the user is not currently in the all users table.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
     
+    <div class="description">
+        Only execute the success callback if the user is not currently in the all users table.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -1667,7 +1608,7 @@ Will fall back to trying to resolve message using default language set in config
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">string</span>
 
 
             
@@ -1690,7 +1631,7 @@ Will fall back to trying to resolve message using default language set in config
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#dbQuerySuccess">dbQuerySuccess</a></span>
+<span class="param-type"><a href="global.html#DbQuerySuccess">DbQuerySuccess</a></span>
 
 
             
@@ -1706,19 +1647,10 @@ Will fall back to trying to resolve message using default language set in config
     
     </tbody>
 </table>
+    
 
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -1740,7 +1672,7 @@ Will fall back to trying to resolve message using default language set in config
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line146">line 146</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line153">line 153</a>
     </li></ul></dd>
     
 
@@ -1752,46 +1684,44 @@ Will fall back to trying to resolve message using default language set in config
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
+    
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="insertConfirmed"><span class="type-signature"></span>insertConfirmed<span class="signature">(tweetActivity)</span><span class="type-signature"></span></h4>
 
     
+</dt>
+<dd>
 
-
-
-<div class="description">
-    Insert a confirmed report - i.e. has geo coordinates and is addressed.
-Store both the tweet information and the user hash.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
     
+    <div class="description">
+        Insert a confirmed report - i.e. has geo coordinates and is addressed.
+Store both the tweet information and the user hash.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -1821,7 +1751,7 @@ Store both the tweet information and the user hash.
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#GnipTweetActivity">GnipTweetActivity</a></span>
 
 
             
@@ -1837,19 +1767,10 @@ Store both the tweet information and the user hash.
     
     </tbody>
 </table>
+    
 
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -1871,7 +1792,7 @@ Store both the tweet information and the user hash.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line217">line 217</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line224">line 224</a>
     </li></ul></dd>
     
 
@@ -1883,45 +1804,43 @@ Store both the tweet information and the user hash.
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
+    
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="insertInvitee"><span class="type-signature"></span>insertInvitee<span class="signature">(tweetActivity)</span><span class="type-signature"></span></h4>
 
     
+</dt>
+<dd>
 
-
-
-<div class="description">
-    Insert an invitee - i.e. a user we've invited to participate.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
     
+    <div class="description">
+        Insert an invitee - i.e. a user we've invited to participate.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -1951,7 +1870,7 @@ Store both the tweet information and the user hash.
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#GnipTweetActivity">GnipTweetActivity</a></span>
 
 
             
@@ -1967,19 +1886,10 @@ Store both the tweet information and the user hash.
     
     </tbody>
 </table>
+    
 
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -2001,7 +1911,7 @@ Store both the tweet information and the user hash.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line267">line 267</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line274">line 274</a>
     </li></ul></dd>
     
 
@@ -2013,45 +1923,43 @@ Store both the tweet information and the user hash.
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
+    
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="insertNonSpatial"><span class="type-signature"></span>insertNonSpatial<span class="signature">(tweetActivity)</span><span class="type-signature"></span></h4>
 
     
+</dt>
+<dd>
 
-
-
-<div class="description">
-    Insert a non-spatial tweet report - i.e. we got an addressed tweet without geo coordinates.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
     
+    <div class="description">
+        Insert a non-spatial tweet report - i.e. we got an addressed tweet without geo coordinates.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -2081,7 +1989,7 @@ Store both the tweet information and the user hash.
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#GnipTweetActivity">GnipTweetActivity</a></span>
 
 
             
@@ -2097,19 +2005,10 @@ Store both the tweet information and the user hash.
     
     </tbody>
 </table>
+    
 
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -2131,7 +2030,7 @@ Store both the tweet information and the user hash.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line311">line 311</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line318">line 318</a>
     </li></ul></dd>
     
 
@@ -2143,45 +2042,43 @@ Store both the tweet information and the user hash.
 </dl>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
+    
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id="insertUnConfirmed"><span class="type-signature"></span>insertUnConfirmed<span class="signature">(tweetActivity)</span><span class="type-signature"></span></h4>
 
     
+</dt>
+<dd>
 
-
-
-<div class="description">
-    Insert an unconfirmed report - i.e. has geo coordinates but is not addressed.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
     
+    <div class="description">
+        Insert an unconfirmed report - i.e. has geo coordinates but is not addressed.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -2211,7 +2108,7 @@ Store both the tweet information and the user hash.
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#GnipTweetActivity">GnipTweetActivity</a></span>
 
 
             
@@ -2227,19 +2124,10 @@ Store both the tweet information and the user hash.
     
     </tbody>
 </table>
+    
 
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -2261,7 +2149,7 @@ Store both the tweet information and the user hash.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line285">line 285</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line292">line 292</a>
     </li></ul></dd>
     
 
@@ -2273,45 +2161,43 @@ Store both the tweet information and the user hash.
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
+    
+</dd>
 
         
             
-
-    
-
+<dt>
     <h4 class="name" id="sendReplyTweet"><span class="type-signature"></span>sendReplyTweet<span class="signature">(tweetActivity, message, success)</span><span class="type-signature"></span></h4>
 
     
+</dt>
+<dd>
 
-
-
-<div class="description">
-    Send @reply Twitter message
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
     
+    <div class="description">
+        Send @reply Twitter message
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -2341,7 +2227,7 @@ Store both the tweet information and the user hash.
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="global.html#GnipTweetActivity">GnipTweetActivity</a></span>
 
 
             
@@ -2364,7 +2250,7 @@ Store both the tweet information and the user hash.
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">string</span>
 
 
             
@@ -2403,19 +2289,10 @@ Store both the tweet information and the user hash.
     
     </tbody>
 </table>
+    
 
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -2437,7 +2314,7 @@ Store both the tweet information and the user hash.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line170">line 170</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line177">line 177</a>
     </li></ul></dd>
     
 
@@ -2449,45 +2326,43 @@ Store both the tweet information and the user hash.
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
+    
+</dd>
 
         
             
-
-    
-
+<dt>
     <h4 class="name" id="tweetAdmin"><span class="type-signature"></span>tweetAdmin<span class="signature">(warningMessage, callback)</span><span class="type-signature"></span></h4>
 
     
+</dt>
+<dd>
 
-
-
-<div class="description">
-    Tweet the admin usernames defined in 'adminTwitterUsernames' in config.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
     
+    <div class="description">
+        Tweet the admin usernames defined in 'adminTwitterUsernames' in config.
+    </div>
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -2517,7 +2392,7 @@ Store both the tweet information and the user hash.
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">string</span>
 
 
             
@@ -2556,19 +2431,10 @@ Store both the tweet information and the user hash.
     
     </tbody>
 </table>
+    
 
-
-
-
-
+    
 <dl class="details">
-
-    
-
-    
-
-    
-
     
 
     
@@ -2590,7 +2456,7 @@ Store both the tweet information and the user hash.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line609">line 609</a>
+        <a href="CognicityReportsPowertrack.js.html">CognicityReportsPowertrack.js</a>, <a href="CognicityReportsPowertrack.js.html#line616">line 616</a>
     </li></ul></dd>
     
 
@@ -2602,21 +2468,22 @@ Store both the tweet information and the user hash.
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
+</dd>
 
-
-
-
-
-
-
-
-        
+        </dl>
     
 
     
@@ -2632,13 +2499,13 @@ Store both the tweet information and the user hash.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CognicityReportsPowertrack.html">CognicityReportsPowertrack</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cognicityReportsPowertrack">cognicityReportsPowertrack</a></li><li><a href="global.html#Gnip">Gnip</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#pg">pg</a></li><li><a href="global.html#twit">twit</a></li><li><a href="global.html#twitter">twitter</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="CognicityReportsPowertrack.html">CognicityReportsPowertrack</a></li></ul><h3>Namespaces</h3><ul><li><a href="config.html">config</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
-<br class="clear">
+<br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Tue Jan 13 2015 15:22:47 GMT+1100 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Wed Jan 21 2015 17:00:17 GMT+1100 (EST)
 </footer>
 
 <script> prettyPrint(); </script>
