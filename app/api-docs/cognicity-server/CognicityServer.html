@@ -39,34 +39,34 @@
     <div class="container-overview">
     
         
+<dt>
+    
+        
+        <h2>Constructor</h2>
+        
+
+        <h4 class="name" id="CognicityServer"><span class="type-signature"></span>new CognicityServer<span class="signature">(config, logger, pg)</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
 
     
-    <h2>Constructor</h2>
+    <div class="description">
+        A CognicityServer object queries against the cognicity database and returns data to be returnedto the client via the REST service.
+    </div>
     
 
-    <h4 class="name" id="CognicityServer"><span class="type-signature"></span>new CognicityServer<span class="signature">(config, logger, pg)</span><span class="type-signature"></span></h4>
+    
 
     
 
-
-
-<div class="description">
-    A CognicityServer object queries against the cognicity database and returns data to be returnedto the client via the REST service.
-</div>
-
-
-
-
-
-
-
-    <h5>This:</h5>
-    <ul><li>{<a href="CognicityServer.html">CognicityServer</a>}</li></ul>
-
-
-
-    <h5>Parameters:</h5>
     
+
+    
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -96,7 +96,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type"><a href="config.html">config</a></span>
 
 
             
@@ -119,7 +119,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -129,7 +129,7 @@
 
             
 
-            <td class="description last">Winston logger instance</td>
+            <td class="description last">Configured Winston logger instance</td>
         </tr>
 
     
@@ -142,7 +142,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -152,15 +152,15 @@
 
             
 
-            <td class="description last">Postgres 'pg' module instance</td>
+            <td class="description last">Configured PostGres 'pg' module instance</td>
         </tr>
 
     
     </tbody>
 </table>
+    
 
-
-
+    
 
 
 <dl class="details">
@@ -192,7 +192,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line12">line 12</a>
+        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -204,19 +204,20 @@
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
+    
+</dd>
 
     
     </div>
@@ -234,31 +235,33 @@
     
         <h3 class="subsection-title">Members</h3>
 
-        
+        <dl>
             
-<h4 class="name" id="config"><span class="type-signature"></span>config<span class="type-signature"> :Object</span></h4>
+<dt>
+    <h4 class="name" id="config"><span class="type-signature"></span>config<span class="type-signature"> :object</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Server configuration
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
 
 
+            </li>
+        </ul>
+    
 
-
-<div class="description">
-    Server configuration object loaded from the configuration file
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
+    
 
 
 <dl class="details">
@@ -290,7 +293,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line29">line 29</a>
+        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line31">line 31</a>
     </li></ul></dd>
     
 
@@ -302,35 +305,38 @@
 </dl>
 
 
+    
 
-
-
+    
+</dd>
 
         
             
-<h4 class="name" id="logger"><span class="type-signature"></span>logger<span class="type-signature"> :Object</span></h4>
+<dt>
+    <h4 class="name" id="logger"><span class="type-signature"></span>logger<span class="type-signature"> :object</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Configured Winston logger instance
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
 
 
+            </li>
+        </ul>
+    
 
-
-<div class="description">
-    Winston logger instance
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
+    
 
 
 <dl class="details">
@@ -362,7 +368,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line35">line 35</a>
+        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line37">line 37</a>
     </li></ul></dd>
     
 
@@ -374,35 +380,38 @@
 </dl>
 
 
+    
 
-
-
+    
+</dd>
 
         
             
-<h4 class="name" id="pg"><span class="type-signature"></span>pg<span class="type-signature"> :Object</span></h4>
+<dt>
+    <h4 class="name" id="pg"><span class="type-signature"></span>pg<span class="type-signature"> :object</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        Configured 'pg' module PostGres interface instance
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">object</span>
 
 
+            </li>
+        </ul>
+    
 
-
-<div class="description">
-    'pg' module Postgres interface instance
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
+    
 
 
 <dl class="details">
@@ -434,7 +443,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line41">line 41</a>
+        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -446,41 +455,45 @@
 </dl>
 
 
+    
 
+    
+</dd>
 
-
-
-        
+        </dl>
     
 
     
         <h3 class="subsection-title">Methods</h3>
 
-        
+        <dl>
             
+<dt>
+    
+        
+
+        <h4 class="name" id="dataQuery"><span class="type-signature"></span>dataQuery<span class="signature">(queryObject, callback)</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Perform a query against the database using the parameterized query in the queryObject.Call the callback with error information or result information.
+    </div>
+    
 
     
 
-    <h4 class="name" id="dataQuery"><span class="type-signature"></span>dataQuery<span class="signature">(queryObject, callback)</span><span class="type-signature"></span></h4>
+    
 
     
 
-
-
-<div class="description">
-    Perform a query against the database using the parameterized query in the queryObject.Call the callback with error information or result information.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
     
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -510,7 +523,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -520,7 +533,78 @@
 
             
 
-            <td class="description last">Query object for parameterized postgres query</td>
+            <td class="description last">Query object for parameterized postgres query
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The SQL query text for the parameterized query</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>values</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Values for the parameterized query</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+            </td>
         </tr>
 
     
@@ -533,7 +617,7 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#dataQueryCallback">dataQueryCallback</a></span>
+<span class="param-type"><a href="global.html#DataQueryCallback">DataQueryCallback</a></span>
 
 
             
@@ -549,9 +633,9 @@
     
     </tbody>
 </table>
+    
 
-
-
+    
 
 
 <dl class="details">
@@ -583,7 +667,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line57">line 57</a>
+        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line61">line 61</a>
     </li></ul></dd>
     
 
@@ -595,45 +679,49 @@
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
+    
+</dd>
 
         
             
+<dt>
+    
+        
+
+        <h4 class="name" id="getCountByArea"><span class="type-signature"></span>getCountByArea<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Count reports within given polygon layer (e.g. wards).Call the callback function with error or response data.
+    </div>
+    
 
     
 
-    <h4 class="name" id="getCountByArea"><span class="type-signature"></span>getCountByArea<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
+    
 
     
 
-
-
-<div class="description">
-    Count unconfirmed reports within given polygon layer (e.g. wards)Call the callback function with error or response data.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
     
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -663,7 +751,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -673,7 +761,147 @@
 
             
 
-            <td class="description last">Configuration options for the query</td>
+            <td class="description last">Configuration options for the query
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unix timestamp for start of query period</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>end</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unix timestamp for end of query period</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>polygon_layer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Database table for layer of geo data</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>point_layer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Database table for confirmed reports</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>point_layer_uc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Database table for unconfirmed reports</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+            </td>
         </tr>
 
     
@@ -686,7 +914,7 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#dataQueryCallback">dataQueryCallback</a></span>
+<span class="param-type"><a href="global.html#DataQueryCallback">DataQueryCallback</a></span>
 
 
             
@@ -702,9 +930,9 @@
     
     </tbody>
 </table>
+    
 
-
-
+    
 
 
 <dl class="details">
@@ -736,7 +964,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line285">line 285</a>
+        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line300">line 300</a>
     </li></ul></dd>
     
 
@@ -748,45 +976,49 @@
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
+    
+</dd>
 
         
             
+<dt>
+    
+        
+
+        <h4 class="name" id="getHistoricalCountByArea"><span class="type-signature"></span>getHistoricalCountByArea<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Get a series of report counts by polygon layer for a historical time period.
+    </div>
+    
 
     
 
-    <h4 class="name" id="getHistoricalCountByArea"><span class="type-signature"></span>getHistoricalCountByArea<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
+    
 
     
 
-
-
-<div class="description">
-    Sum of confirmed and unconfirmed aggregates from archive
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
     
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -816,7 +1048,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -826,120 +1058,9 @@
 
             
 
-            <td class="description last">Options object, containing start_time, blocks and polygon_layer properties</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
+            <td class="description last">Configuration options for the query
+                <h6>Properties</h6>
                 
-<span class="param-type"><a href="global.html#dataQueryCallback">dataQueryCallback</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Callback for handling error or response data</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line380">line 380</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getInfrastructure"><span class="type-signature"></span>getInfrastructure<span class="signature">(name, callback)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Sum of confirmed and unconfirmed aggregates from archive
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
 
 <table class="params">
     <thead>
@@ -963,13 +1084,13 @@
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>start_time</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">number</span>
 
 
             
@@ -979,7 +1100,105 @@
 
             
 
-            <td class="description last">The key of the infrastructure configuration item</td>
+            <td class="description last">Unix timestamp for start of query period</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>blocks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Number of hourly blocks to return</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>polygon_layer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Database table for layer of geo data</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>point_layer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Database table for confirmed reports</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>point_layer_uc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Database table for unconfirmed reports</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+            </td>
         </tr>
 
     
@@ -992,7 +1211,7 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#dataQueryCallback">dataQueryCallback</a></span>
+<span class="param-type"><a href="global.html#DataQueryCallback">DataQueryCallback</a></span>
 
 
             
@@ -1008,9 +1227,9 @@
     
     </tbody>
 </table>
+    
 
-
-
+    
 
 
 <dl class="details">
@@ -1042,7 +1261,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line437">line 437</a>
+        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line391">line 391</a>
     </li></ul></dd>
     
 
@@ -1054,198 +1273,49 @@
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
+    
+</dd>
 
         
             
-
+<dt>
     
-
-    <h4 class="name" id="getReports"><span class="type-signature"></span>getReports<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Get confirmed reports from the database.Call the callback function with error or response data.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
         
 
-        <th>Type</th>
+        <h4 class="name" id="getInfrastructure"><span class="type-signature"></span>getInfrastructure<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
 
         
+    
+</dt>
+<dd>
 
+    
+    <div class="description">
+        Get infrastructure details as JSON/GeoJSON response.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
         
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>options</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Configuration options for the query</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#dataQueryCallback">dataQueryCallback</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Callback for handling error or response data</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line94">line 94</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id="getReportsCount"><span class="type-signature"></span>getReportsCount<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    Count confirmed unconfirmed reports within a given number of hoursCall the callback function with error or response data.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
 
 <table class="params">
     <thead>
@@ -1275,7 +1345,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -1285,7 +1355,55 @@
 
             
 
-            <td class="description last">Configuration options for the query</td>
+            <td class="description last">Options object for the server query
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>infrastructureTableName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Table name of the infrastructure table to query</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+            </td>
         </tr>
 
     
@@ -1298,7 +1416,7 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#dataQueryCallback">dataQueryCallback</a></span>
+<span class="param-type"><a href="global.html#DataQueryCallback">DataQueryCallback</a></span>
 
 
             
@@ -1314,9 +1432,9 @@
     
     </tbody>
 </table>
+    
 
-
-
+    
 
 
 <dl class="details">
@@ -1348,7 +1466,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line199">line 199</a>
+        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line461">line 461</a>
     </li></ul></dd>
     
 
@@ -1360,45 +1478,49 @@
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
+    
+</dd>
 
         
             
+<dt>
+    
+        
+
+        <h4 class="name" id="getReports"><span class="type-signature"></span>getReports<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Get confirmed reports from the database.Call the callback function with error or response data.
+    </div>
+    
 
     
 
-    <h4 class="name" id="getUnConfirmedReports"><span class="type-signature"></span>getUnConfirmedReports<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
+    
 
     
 
-
-
-<div class="description">
-    Get unconfirmed reports from the database.Call the callback function with error or response data.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
     
+        <h5>Parameters:</h5>
+        
 
 <table class="params">
     <thead>
@@ -1428,7 +1550,7 @@
             <td class="type">
             
                 
-<span class="param-type">Object</span>
+<span class="param-type">object</span>
 
 
             
@@ -1438,7 +1560,160 @@
 
             
 
-            <td class="description last">Configuration options for the query</td>
+            <td class="description last">Configuration options for the query
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unix timestamp for start of query period</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>end</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unix timestamp for end of query period</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tbl_reports</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Database table for confirmed reports</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>limit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Number of results to limit to, or null for all</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+            </td>
         </tr>
 
     
@@ -1451,7 +1726,7 @@
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#dataQueryCallback">dataQueryCallback</a></span>
+<span class="param-type"><a href="global.html#DataQueryCallback">DataQueryCallback</a></span>
 
 
             
@@ -1467,9 +1742,9 @@
     
     </tbody>
 </table>
+    
 
-
-
+    
 
 
 <dl class="details">
@@ -1501,7 +1776,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line148">line 148</a>
+        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line102">line 102</a>
     </li></ul></dd>
     
 
@@ -1513,21 +1788,880 @@
 </dl>
 
 
+    
 
+    
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
+    
+</dd>
 
         
+            
+<dt>
+    
+        
+
+        <h4 class="name" id="getReportsCount"><span class="type-signature"></span>getReportsCount<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Count confirmed unconfirmed reports within a given number of hours.Call the callback function with error or response data.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Configuration options for the query
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unix timestamp for start of query period</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>end</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unix timestamp for end of query period</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tbl_reports</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Database table for confirmed reports</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tbl_reports_unconfirmed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Database table for unconfirmed reports</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#DataQueryCallback">DataQueryCallback</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Callback for handling error or response data</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line206">line 206</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        
+
+        <h4 class="name" id="getReportsTimeSeries"><span class="type-signature"></span>getReportsTimeSeries<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Get a time series of report counts at hourly intervals over the specified period.Call the callback function with error or response data.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Configuration options for the query
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unix timestamp for start of query period</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>end</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Unix timestamp for end of query period</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tbl_reports</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Database table for confirmed reports</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tbl_reports_unconfirmed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Database table for unconfirmed reports</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#DataQueryCallback">DataQueryCallback</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Callback for handling error or response data</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line249">line 249</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        
+
+        <h4 class="name" id="getUnConfirmedReports"><span class="type-signature"></span>getUnConfirmedReports<span class="signature">(options, callback)</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        Get unconfirmed reports from the database.Call the callback function with error or response data.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Configuration options for the query
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>start</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unix timestamp for start of query period</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>end</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Unix timestamp for end of query period</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tbl_reports_unconfirmed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Database table for unconfirmed reports</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>limit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Number of results to limit to, or null for all</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#DataQueryCallback">DataQueryCallback</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Callback for handling error or response data</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="CognicityServer.js.html">CognicityServer.js</a>, <a href="CognicityServer.js.html#line155">line 155</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
     
 
     
@@ -1543,13 +2677,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CognicityServer.html">CognicityServer</a></li><li><a href="Validation.html">Validation</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cachePermanently">cachePermanently</a></li><li><a href="global.html#cacheTemporarily">cacheTemporarily</a></li><li><a href="global.html#prepareResponse">prepareResponse</a></li><li><a href="global.html#writeResponse">writeResponse</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CognicityServer.html">CognicityServer</a></li><li><a href="Validation.html">Validation</a></li></ul><h3>Namespaces</h3><ul><li><a href="config.html">config</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cachePermanently">cachePermanently</a></li><li><a href="global.html#cacheTemporarily">cacheTemporarily</a></li><li><a href="global.html#createErrorWithStatus">createErrorWithStatus</a></li><li><a href="global.html#prepareResponse">prepareResponse</a></li><li><a href="global.html#writeResponse">writeResponse</a></li></ul>
 </nav>
 
-<br class="clear">
+<br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Tue Jan 13 2015 15:22:05 GMT+1100 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha11</a> on Wed Jan 21 2015 13:20:59 GMT+1100 (EST)
 </footer>
 
 <script> prettyPrint(); </script>
