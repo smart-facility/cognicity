@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: config.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: config.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
+
+// config.js - Configuration for cognicity-server
+
+/**
+ * Cognicity server configuration object.
+ * @namespace {object} config
+ * @property {string} instance The name of this instance of the cognicity server
+ * @property {string} public_dir Path to root of files to serve
+ * @property {string} url_prefix Prefix for start of public URLs
+ * @property {string} root_redirect If the user browses to '/', redirect them to here
+ * @property {number} cache_timeout How long data will live in the cache, in milliseconds
+ * @property {boolean} data If true, enable the data query routes
+ * @property {boolean} aggregates If true, enable the aggregate query routes
+ * @property {boolean} compression If true, enable gzip compression on the server responses 
+ * @property {object} api Configuration options for the API
+ * @property {object} api.aggregates Configuration options for the aggregates
+ * @property {object} api.aggregates.archive Configuration options for the archive aggregates
+ * @property {string} api.aggregates.archive.level Polygon level to bucket response data in an archive aggregate query
+ * @property {object} pg Configuration options for the PostGres connection
+ * @property {string} pg.conString The connection URL for PostGres
+ * @property {number} pg.reconnectionDelay The delay between attempts to reconnect to PostGres
+ * @property {number} pg.reconnectionAttempts The number of attempts to reconnect to PostGres before exiting
+ * @property {string} pg.tbl_reports Database table containing confirmed reports
+ * @property {string} pg.tbl_reports_unconfirmed Database table containing unconfirmed reports
+ * @property {object} pg.aggregate_levels Object of aggregate levels mapping a name to a database table
+ * @property {string} pg.aggregate_levels.(name) Name of the aggregate level
+ * @property {string} pg.aggregate_levels.(value) Database table for the aggregate level
+ * @property {object} pg.infrastructure_tbls Object of infrastructure tables mapping a name to a database table
+ * @property {string} pg.infrastructure_tbls.(name) Name of the infrastructure type
+ * @property {string} pg.infrastructure_tbls.(value) Database table for the infrastructure type
+ * @property {?number} pg.limit Limit of number of confirmed reports to return in data query
+ * @property {?number} pg.uc_limit Limit of number of unconfirmed reports to return in data query
+ * @property {object} logger Configuration options for logging
+ * @property {string} logger.level Log level - info, verbose or debug are most useful. Levels are (npm defaults): silly, debug, verbose, info, warn, error.
+ * @property {number} logger.maxFileSize Maximum size of each log file in bytes
+ * @property {number} logger.maxFiles Maximum number of log files to keep
+ * @property {?number} logger.logDirectory Full path to directory to store log files in, if not set logs will be written to the application directory
+ * @property {number} port Port to launch server on
+ */
+var config = {};
+
+// Instance name - default name for this configuration (will be server process name)
+config.instance = 'cognicity-server';
+
+// Location of HTML files to serve
+config.public_dir = __dirname+'/petajakarta-web/build/banjir';
+
+// Optional URL prefix - e.g. http://localhost/project-name/
+config.url_prefix = 'banjir';
+
+// Optional redirect path for root ['/] requests
+config.root_redirect = 'banjir/in';
+
+// Default cache time expiry
+config.cache_timeout = 60000; // Data cache expiry (1 minute)
+
+config.data = true; // Enable data routes
+config.aggregates = true; // Enable aggregate data outputs
+config.compression = false; // Enable express compression middleware
+
+// API settings
+config.api = {};
+config.api.aggregates = {};
+config.api.aggregates.archive = {};
+config.api.aggregates.archive.level = 'rw';
+
+// Postgres database connection
+config.pg = {};
+// Sample connection string using environment variables, e.g. from AWS Elastic Beanstalk.
+// Substitute variable names for constants in other environments.
+config.pg.conString = 'postgres://' + process.env.RDS_USERNAME + ':' + process.env.RDS_PASSWORD +'@' + process.env.RDS_HOSTNAME + ':' + process.env.RDS_PORT + '/' + process.env.DB_NAME;
+// Database reconnection settings
+config.pg.reconnectionDelay = 1000 * 60 * 3; // Delay before attempting a reconnection in ms
+config.pg.reconnectionAttempts = 5; // Number of times to attempt reconnection before notifying admin and exiting
+// Database tables
+config.pg.tbl_reports = 'tweet_reports';
+config.pg.tbl_reports_unconfirmed = 'tweet_reports_unconfirmed';
+
+// Optional support for report aggregation, required if config.data.aggregates set to true.
+config.pg.aggregate_levels = {
+	'city':'jkt_city_boundary',
+	'subdistrict':'jkt_subdistrict_boundary',
+	'village':'jkt_village_boundary',
+	'rw':'jkt_rw_boundary'
+};
+config.pg.infrastructure_tbls = {
+	'waterways':'waterways',
+	'pumps':'pumps',
+	'floodgates':'floodgates'
+};
+config.pg.limit = null; // Limit number of rows returned in a query
+config.pg.uc_limit = null; // Limit number of unconfirmed reports.
+
+// Logging configuration
+config.logger = {};
+config.logger.level = "debug"; // What level to log at; info, verbose or debug are most useful. Levels are (npm defaults): silly, debug, verbose, info, warn, error.
+config.logger.maxFileSize = 1024 * 1024 * 100; // Max file size in bytes of each log file; default 100MB
+config.logger.maxFiles = 10; // Max number of log files kept
+config.logger.logDirectory = '/var/log/nodejs'; // Set this to a full path to a directory - if not set logs will be written to the application directory.
+
+// Server port
+config.port = process.env.PORT || 8081;
+
+module.exports = config;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CognicityServer.html">CognicityServer</a></li><li><a href="Validation.html">Validation</a></li></ul><h3>Namespaces</h3><ul><li><a href="config.html">config</a></li></ul><h3>Global</h3><ul><li><a href="global.html#cachePermanently">cachePermanently</a></li><li><a href="global.html#cacheTemporarily">cacheTemporarily</a></li><li><a href="global.html#createErrorWithStatus">createErrorWithStatus</a></li><li><a href="global.html#prepareResponse">prepareResponse</a></li><li><a href="global.html#writeResponse">writeResponse</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha11</a> on Wed Jan 21 2015 13:20:59 GMT+1100 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
