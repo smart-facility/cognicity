@@ -23,45 +23,51 @@
 
 
 
+
 <section>
 
 <header>
-    <h2>
-    CognicityReportsPowertrack
-    </h2>
+    
+        <h2>
+        CognicityReportsPowertrack
+        </h2>
+        
     
 </header>
 
 <article>
     <div class="container-overview">
     
+        
 
     
-        
-<dt>
+    <h2>Constructor</h2>
+    
+
     <h4 class="name" id="CognicityReportsPowertrack"><span class="type-signature"></span>new CognicityReportsPowertrack<span class="signature">(config, twit, pg, logger, Gnip)</span><span class="type-signature"></span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        A CognicityReportsPowertrack object:
+
+
+<div class="description">
+    A CognicityReportsPowertrack object:
 - connects to a powertrack stream
 - monitors tweets based on configuration
 - sends messages to users via twitter
 - stores data from tweets in database
-    </div>
-    
+</div>
 
-    
 
-    
 
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-        <h5>Parameters:</h5>
-        
 
 <table class="params">
     <thead>
@@ -199,10 +205,19 @@
     
     </tbody>
 </table>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -236,25 +251,22 @@
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-</dd>
+
+
+
+
+
+
+
 
     
     </div>
-
-    
 
     
 
@@ -269,34 +281,41 @@
     
         <h3 class="subsection-title">Members</h3>
 
-        <dl>
+        
             
-<dt>
-    <h4 class="name" id="_cachedTweets"><span class="type-signature"></span>_cachedTweets<span class="type-signature"> :Array</span></h4>
+<h4 class="name" id="_cachedTweets"><span class="type-signature"></span>_cachedTweets<span class="type-signature"> :Array</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Store tweets if we cannot process them immediately, for later processing.
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    Store tweets if we cannot process them immediately, for later processing.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">Array</span>
 
 
-            </li>
-        </ul>
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -330,40 +349,46 @@
 </dl>
 
 
-    
 
-    
-</dd>
+
+
 
         
             
-<dt>
-    <h4 class="name" id="_cacheMode"><span class="type-signature"></span>_cacheMode<span class="type-signature"> :boolean</span></h4>
+<h4 class="name" id="_cacheMode"><span class="type-signature"></span>_cacheMode<span class="type-signature"> :boolean</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Flag signifying if we are currently able to process tweets immediately.
+
+
+
+<div class="description">
+    Flag signifying if we are currently able to process tweets immediately.
 Turned on if the database is temporarily offline so we can cache tweets for a short time.
-    </div>
-    
+</div>
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">boolean</span>
 
 
-            </li>
-        </ul>
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -397,39 +422,45 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
 </dl>
 
 
-    
 
-    
-</dd>
+
+
 
         
             
-<dt>
-    <h4 class="name" id="config"><span class="type-signature"></span>config<span class="type-signature"> :<a href="config.html">config</a></span></h4>
+<h4 class="name" id="config"><span class="type-signature"></span>config<span class="type-signature"> :<a href="config.html">config</a></span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Configuration object
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    Configuration object
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type"><a href="config.html">config</a></span>
 
 
-            </li>
-        </ul>
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -463,39 +494,45 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
 </dl>
 
 
-    
 
-    
-</dd>
+
+
 
         
             
-<dt>
-    <h4 class="name" id="Gnip"><span class="type-signature"></span>Gnip<span class="type-signature"> :object</span></h4>
+<h4 class="name" id="Gnip"><span class="type-signature"></span>Gnip<span class="type-signature"> :object</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Instance of Gnip object from Gnip module
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    Instance of Gnip object from Gnip module
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">object</span>
 
 
-            </li>
-        </ul>
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -529,39 +566,45 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
 </dl>
 
 
-    
 
-    
-</dd>
+
+
 
         
             
-<dt>
-    <h4 class="name" id="logger"><span class="type-signature"></span>logger<span class="type-signature"> :object</span></h4>
+<h4 class="name" id="logger"><span class="type-signature"></span>logger<span class="type-signature"> :object</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Configured instance of logger object from Winston module
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    Configured instance of logger object from Winston module
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">object</span>
 
 
-            </li>
-        </ul>
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -595,39 +638,45 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
 </dl>
 
 
-    
 
-    
-</dd>
+
+
 
         
             
-<dt>
-    <h4 class="name" id="pg"><span class="type-signature"></span>pg<span class="type-signature"> :object</span></h4>
+<h4 class="name" id="pg"><span class="type-signature"></span>pg<span class="type-signature"> :object</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Configured instance of pg object from pg module
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    Configured instance of pg object from pg module
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">object</span>
 
 
-            </li>
-        </ul>
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -661,39 +710,45 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
 </dl>
 
 
-    
 
-    
-</dd>
+
+
 
         
             
-<dt>
-    <h4 class="name" id="twit"><span class="type-signature"></span>twit<span class="type-signature"> :object</span></h4>
+<h4 class="name" id="twit"><span class="type-signature"></span>twit<span class="type-signature"> :object</span></h4>
 
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Configured instance of twitter object from ntwitter module
-    </div>
-    
 
-    
-        <h5>Type:</h5>
-        <ul>
-            <li>
-                
+
+
+<div class="description">
+    Configured instance of twitter object from ntwitter module
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
 <span class="param-type">object</span>
 
 
-            </li>
-        </ul>
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -727,41 +782,52 @@ Turned on if the database is temporarily offline so we can cache tweets for a sh
 </dl>
 
 
-    
 
-    
-</dd>
 
-        </dl>
+
+
+        
     
 
     
         <h3 class="subsection-title">Methods</h3>
 
-        <dl>
+        
             
-<dt>
+
+    
+
     <h4 class="name" id="areTweetMessageLengthsOk"><span class="type-signature"></span>areTweetMessageLengthsOk<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Check that all tweetable message texts are of an acceptable length.
+
+
+<div class="description">
+    Check that all tweetable message texts are of an acceptable length.
 This is 109 characters max if timestamps are enabled, or 123 characters max if timestamps are not enabled.
-    </div>
-    
+</div>
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
 <dl class="details">
+
+    
+
+    
+
+    
+
     
 
     
@@ -804,20 +870,20 @@ This is 109 characters max if timestamps are enabled, or 123 characters max if t
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     True if message texts are all okay, false if any are not.
 </div>
@@ -836,37 +902,48 @@ This is 109 characters max if timestamps are enabled, or 123 characters max if t
     </dd>
 </dl>
 
-        
-
     
-</dd>
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="connectStream"><span class="type-signature"></span>connectStream<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Connect the Gnip stream.
+
+
+<div class="description">
+    Connect the Gnip stream.
 Establish the network connection, push rules to Gnip.
 Setup error handlers and timeout handler.
 Handle events from the stream on incoming data.
-    </div>
-    
+</div>
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
 <dl class="details">
+
+    
+
+    
+
+    
+
     
 
     
@@ -900,43 +977,45 @@ Handle events from the stream on incoming data.
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-</dd>
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="dbQuery"><span class="type-signature"></span>dbQuery<span class="signature">(config, success)</span><span class="type-signature"></span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Execute the SQL against the database connection. Run the success callback on success if supplied.
-    </div>
-    
 
-    
 
-    
+<div class="description">
+    Execute the SQL against the database connection. Run the success callback on success if supplied.
+</div>
 
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-        <h5>Parameters:</h5>
-        
 
 <table class="params">
     <thead>
@@ -1076,10 +1155,19 @@ Handle events from the stream on incoming data.
     
     </tbody>
 </table>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -1113,45 +1201,56 @@ Handle events from the stream on incoming data.
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-</dd>
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="disableCacheMode"><span class="type-signature"></span>disableCacheMode<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Resume realtime processing of tweets.
+
+
+<div class="description">
+    Resume realtime processing of tweets.
 Also immediately process any tweets cached while caching mode was enabled.
-    </div>
-    
+</div>
 
-    
 
-    
 
-    
 
-    
+
+
+
+
+
+
+
+
+
 <dl class="details">
+
+    
+
+    
+
+    
+
     
 
     
@@ -1185,44 +1284,55 @@ Also immediately process any tweets cached while caching mode was enabled.
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-</dd>
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="enableCacheMode"><span class="type-signature"></span>enableCacheMode<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Stop realtime processing of tweets and start caching tweets until caching mode is disabled.
-    </div>
-    
 
-    
 
-    
+<div class="description">
+    Stop realtime processing of tweets and start caching tweets until caching mode is disabled.
+</div>
 
-    
 
-    
+
+
+
+
+
+
+
+
+
+
+
 <dl class="details">
+
+    
+
+    
+
+    
+
     
 
     
@@ -1256,45 +1366,47 @@ Also immediately process any tweets cached while caching mode was enabled.
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-</dd>
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="filter"><span class="type-signature"></span>filter<span class="signature">(tweetActivity)</span><span class="type-signature"></span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Main stream tweet filtering logic.
+
+
+<div class="description">
+    Main stream tweet filtering logic.
 Filter the incoming tweet and decide what action needs to be taken:
 confirmed report, ask for geo, ask user to participate, or nothing
-    </div>
-    
+</div>
 
-    
 
-    
 
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-        <h5>Parameters:</h5>
-        
 
 <table class="params">
     <thead>
@@ -1340,10 +1452,19 @@ confirmed report, ask for geo, ask user to participate, or nothing
     
     </tbody>
 </table>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -1377,44 +1498,46 @@ confirmed report, ask for geo, ask user to participate, or nothing
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-</dd>
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="getMessage"><span class="type-signature"></span>getMessage<span class="signature">(code, tweetActivity)</span><span class="type-signature"> &rarr; (nullable) {string}</span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Resolve message code from config.twitter using passed language codes.
+
+
+<div class="description">
+    Resolve message code from config.twitter using passed language codes.
 Will fall back to trying to resolve message using default language set in configuration.
-    </div>
-    
+</div>
 
-    
 
-    
 
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-        <h5>Parameters:</h5>
-        
 
 <table class="params">
     <thead>
@@ -1483,10 +1606,19 @@ Will fall back to trying to resolve message using default language set in config
     
     </tbody>
 </table>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -1520,20 +1652,20 @@ Will fall back to trying to resolve message using default language set in config
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-    <h5>Returns:</h5>
-    
-            
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
 <div class="param-desc">
     Message text, or null if not resolved.
 </div>
@@ -1552,33 +1684,35 @@ Will fall back to trying to resolve message using default language set in config
     </dd>
 </dl>
 
-        
-
     
-</dd>
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="ifNewUser"><span class="type-signature"></span>ifNewUser<span class="signature">(user, callback)</span><span class="type-signature"></span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Only execute the success callback if the user is not currently in the all users table.
-    </div>
-    
 
-    
 
-    
+<div class="description">
+    Only execute the success callback if the user is not currently in the all users table.
+</div>
 
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-        <h5>Parameters:</h5>
-        
 
 <table class="params">
     <thead>
@@ -1647,10 +1781,19 @@ Will fall back to trying to resolve message using default language set in config
     
     </tbody>
 </table>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -1684,44 +1827,46 @@ Will fall back to trying to resolve message using default language set in config
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-</dd>
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="insertConfirmed"><span class="type-signature"></span>insertConfirmed<span class="signature">(tweetActivity)</span><span class="type-signature"></span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Insert a confirmed report - i.e. has geo coordinates and is addressed.
+
+
+<div class="description">
+    Insert a confirmed report - i.e. has geo coordinates and is addressed.
 Store both the tweet information and the user hash.
-    </div>
-    
+</div>
 
-    
 
-    
 
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-        <h5>Parameters:</h5>
-        
 
 <table class="params">
     <thead>
@@ -1767,10 +1912,19 @@ Store both the tweet information and the user hash.
     
     </tbody>
 </table>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -1804,43 +1958,45 @@ Store both the tweet information and the user hash.
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-</dd>
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="insertInvitee"><span class="type-signature"></span>insertInvitee<span class="signature">(tweetActivity)</span><span class="type-signature"></span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Insert an invitee - i.e. a user we've invited to participate.
-    </div>
-    
 
-    
 
-    
+<div class="description">
+    Insert an invitee - i.e. a user we've invited to participate.
+</div>
 
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-        <h5>Parameters:</h5>
-        
 
 <table class="params">
     <thead>
@@ -1886,10 +2042,19 @@ Store both the tweet information and the user hash.
     
     </tbody>
 </table>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -1923,43 +2088,45 @@ Store both the tweet information and the user hash.
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-</dd>
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="insertNonSpatial"><span class="type-signature"></span>insertNonSpatial<span class="signature">(tweetActivity)</span><span class="type-signature"></span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Insert a non-spatial tweet report - i.e. we got an addressed tweet without geo coordinates.
-    </div>
-    
 
-    
 
-    
+<div class="description">
+    Insert a non-spatial tweet report - i.e. we got an addressed tweet without geo coordinates.
+</div>
 
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-        <h5>Parameters:</h5>
-        
 
 <table class="params">
     <thead>
@@ -2005,10 +2172,19 @@ Store both the tweet information and the user hash.
     
     </tbody>
 </table>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -2042,43 +2218,45 @@ Store both the tweet information and the user hash.
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-</dd>
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="insertUnConfirmed"><span class="type-signature"></span>insertUnConfirmed<span class="signature">(tweetActivity)</span><span class="type-signature"></span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Insert an unconfirmed report - i.e. has geo coordinates but is not addressed.
-    </div>
-    
 
-    
 
-    
+<div class="description">
+    Insert an unconfirmed report - i.e. has geo coordinates but is not addressed.
+</div>
 
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-        <h5>Parameters:</h5>
-        
 
 <table class="params">
     <thead>
@@ -2124,10 +2302,19 @@ Store both the tweet information and the user hash.
     
     </tbody>
 </table>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -2161,43 +2348,45 @@ Store both the tweet information and the user hash.
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-</dd>
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="sendReplyTweet"><span class="type-signature"></span>sendReplyTweet<span class="signature">(tweetActivity, message, success)</span><span class="type-signature"></span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Send @reply Twitter message
-    </div>
-    
 
-    
 
-    
+<div class="description">
+    Send @reply Twitter message
+</div>
 
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-        <h5>Parameters:</h5>
-        
 
 <table class="params">
     <thead>
@@ -2289,10 +2478,19 @@ Store both the tweet information and the user hash.
     
     </tbody>
 </table>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -2326,43 +2524,45 @@ Store both the tweet information and the user hash.
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-</dd>
+
+
+
+
+
+
+
 
         
             
-<dt>
+
+    
+
     <h4 class="name" id="tweetAdmin"><span class="type-signature"></span>tweetAdmin<span class="signature">(warningMessage, callback)</span><span class="type-signature"></span></h4>
 
     
-</dt>
-<dd>
 
-    
-    <div class="description">
-        Tweet the admin usernames defined in 'adminTwitterUsernames' in config.
-    </div>
-    
 
-    
 
-    
+<div class="description">
+    Tweet the admin usernames defined in 'adminTwitterUsernames' in config.
+</div>
 
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
-        <h5>Parameters:</h5>
-        
 
 <table class="params">
     <thead>
@@ -2431,10 +2631,19 @@ Store both the tweet information and the user hash.
     
     </tbody>
 </table>
+
+
+
+
+
+<dl class="details">
+
     
 
     
-<dl class="details">
+
+    
+
     
 
     
@@ -2468,22 +2677,21 @@ Store both the tweet information and the user hash.
 </dl>
 
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
-</dd>
 
-        </dl>
+
+
+
+
+
+
+
+        
     
 
     
@@ -2499,13 +2707,13 @@ Store both the tweet information and the user hash.
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="CognicityReportsPowertrack.html">CognicityReportsPowertrack</a></li></ul><h3>Namespaces</h3><ul><li><a href="config.html">config</a></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CognicityReportsPowertrack.html">CognicityReportsPowertrack</a></li></ul><h3>Namespaces</h3><ul><li><a href="config.html">config</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
-<br clear="both">
+<br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Thu Jan 22 2015 14:30:20 GMT+1100 (EST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha13</a> on Thu Jan 22 2015 14:54:16 GMT+1100 (EST)
 </footer>
 
 <script> prettyPrint(); </script>
