@@ -59,7 +59,7 @@ Bower dependencies are automatically installed as part of the grunt build proces
 * [jquery](https://github.com/jquery/jquery) version 1.11.0 or compatible
 
 #### Bower Test Dependencies
-* [mocha](https://github.com/mochajs/mocha) version 1.14.0 or compatible 
+* [mocha](https://github.com/mochajs/mocha) version 1.14.0 or compatible
 * [chai](https://github.com/chaijs/chai) version 1.8.0 or compatible
 
 ## Development
@@ -86,10 +86,10 @@ We're using GitHub pages to host this site, so to publish a new build of the sit
 
 #### Updating API Documentation
 
-The rendered API documentation for the harvester and server is stored within this site. To update the API documentation, follow these steps:
+The rendered API documentation for cognicity-reports-powertrack and cognicity-server is stored within this site. To update the API documentation, follow these steps:
 
-1. Checkout the latest released tag for the harvester
-2. Run `npm run build-docs` in the harvester project
-3. Copy the output files from `docs/cognicity-reports-powertrack/VERSION/` into the cognicity project's folder `api-docs/cognicity-reports-powertrack`
+1. Checkout the latest released tag for cognicity-server or cognicity-reports-powertrack
+2. Run `npm run build-docs` in the relevant project
+3. Copy the output files from `docs/cognicity-[server | reports-powertrack]/VERSION/` into the cognicity project's folder `api-docs/cognicity-[server | reports-powertrack]`
 
 Now follow the normal deployment process for `cognicity` to deploy the updated API documentation.
