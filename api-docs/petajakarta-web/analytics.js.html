@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: analytics.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: analytics.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//analytics.js - JavaScript for PetaJakarta web map
+
+/**
+*@file JavaScript to display analytics from cognicity server (PetaJakarta.org)
+*@copyright (c) Tomas Holderness &amp; SMART Infrastructure Facility January 2014
+*@module analytics
+*/
+
+/**
+	Transforms a number into a formatted, comma separated string. e.g. `1234567`
+	becomes `"1,234,567"`.
+
+	@function
+	@param {number} x the number to be formatted
+*/
+var formatNumberAsString = function(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+var aggregateHours = 24;
+
+/**
+	Get GeoJSON representing counts of reports in RW polygons
+	@param {function} callback - a function to be called when data is finished loading
+	@param {level} string - administrative boundary level to load. Can be 'rw' or 'village', also passed to load function for identification
+*/
+var getAggregates = function(level) {
+
+		jQuery.getJSON('/banjir/data/api/v1/aggregates/live?format=topojson&amp;level='+level+'&amp;hours='+aggregateHours, function(data) {
+
+			var array = {};
+			for (var i=0;i&lt;data.objects.collection.geometries.length;i++){
+				array[i] = data.objects.collection.geometries[i].properties;
+			}
+			loadChart(array);
+
+			loadAggregates(level, topojson.feature(data, data.objects.collection));
+		});
+};
+
+var loadChart = function(data){
+
+	var names = [];
+	var counts = [];
+	for (var key in data){
+		names.push(data[key].level_name);
+		counts.push(data[key].count);
+	}
+
+	var chart_data = {
+		labels: names,
+		datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(93, 160, 240, 0.9)",
+			strokeColor: "rgba(220,220,220,0.8)",
+			highlightFill: "rgba(220,220,220,0.75)",
+			highlightStroke: "rgba(220,220,220,1)",
+			data: counts
+		}
+		]
+	};
+	var ctx2 = document.getElementById("barchart").getContext("2d");
+	var barchart = new Chart(ctx2).Bar(chart_data,{});
+};
+
+var loadTimeseries = function(data){
+
+	var labels = [];
+	var c_counts = [];
+	var uc_counts = [];
+
+	for (var key in data){
+		labels.push(data[key].stamp);
+		c_counts.push(data[key].c_count);
+		uc_counts.push(data[key].uc_count);
+	}
+
+
+	var data2 = {
+		labels: labels,
+		datasets: [
+			{
+				label: "Confirmed reports",
+				fillColor: "rgba(220,220,220,0.2)",
+				strokeColor: "rgba(220,220,220,1)",
+				pointColor: "rgba(220,220,220,1)",
+				pointStrokeColor: "#fff",
+				pointHighlightFill: "#fff",
+				pointHighlightStroke: "rgba(220,220,220,1)",
+				data: c_counts
+			},
+			{
+				label: "Unconfirmed reports",
+				fillColor: "rgba(151,187,205,0.2)",
+				strokeColor: "rgba(151,187,205,1)",
+				pointColor: "rgba(151,187,205,1)",
+				pointStrokeColor: "#fff",
+				pointHighlightFill: "#fff",
+				pointHighlightStroke: "rgba(151,187,205,1)",
+				data: uc_counts
+			}
+		]
+	};
+	var ctx = document.getElementById("timechart").getContext("2d");
+	var myLineChart = new Chart(ctx).Line(data2, {});
+};
+
+var getTimeseries = function(){
+	jQuery.getJSON('/banjir/data/api/v1/reports/timeseries', function(data) {
+		var array = {};
+		for (var i=0;i&lt;data.data.length;i++){
+			array[i] = data.data[i];
+		}
+		loadTimeseries(array);
+	});
+};
+
+
+/**
+	Plots counts of reports in RW polygons
+
+	@param {string} level - string - administrative boundary level to load. Can be 'rw' or 'village', should be passed from getfunction
+	@param {object} aggregates - a GeoJSON object containing polygon features
+*/
+
+var aggregateLayers = {};
+var aggregateVersions = {};
+var aggregateInc = 0;
+
+var onEachFeature = function(feature, layer){
+	if (feature.properties &amp;&amp; feature.properties.level_name){
+		layer.bindPopup(feature.properties.level_name);
+	}
+};
+
+var loadAggregates = function(level, aggregates){
+	var aggregateLayer = L.geoJson(aggregates, {style:styleAggregates, onEachFeature:onEachFeature});
+	aggregateLayer.addTo(map);
+};
+
+/**
+	Styles counts of reports in RW polygons
+
+	@param {object} feature - individual Leaflet/GeoJSON feature object
+	*/
+function styleAggregates(feature) {
+    return {
+        fillColor: getColor(feature.properties.count),
+        weight: 1,
+				//disabled polygon borders for clarity
+        opacity: 1,
+        color: 'black',
+        //dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+
+/**
+	Return a colour based on input number - based on Color Brewer
+
+	@param {integer} d - number representing some attribute (e.g. count)
+
+*/
+function getColor(d) {
+	return d > 30 ? '#800026' :
+					d > 25  ? '#BD0026' :
+					d > 20  ? '#E31A1C' :
+					d > 15  ? '#FC4E2A' :
+					d > 10   ? '#FD8D3C' :
+					d > 5   ? '#FEB24C' :
+					d > 1   ? '#FED976' :
+					d > 0	?	'#FFEDA0' :
+					'#FFEDA0';
+}
+
+/**
+	Centre the map on a given location and open a popup's text box
+
+	@param {string} pkey - the key of the marker to display
+	@param {number} lat - latitude to center on
+	@param {number} lon - longitude to center on
+*/
+var centreMapOnPopup = function(pkey,lat,lon) {
+	var m = markerMap[pkey];
+	map.setView(m._latlng, 17);
+	m.openPopup();
+};
+
+
+/**
+	Legend box
+*/
+var legend = L.control({position:'bottomleft'});
+
+legend.onAdd = function(map) {
+
+	var div = L.DomUtil.create('div', 'info legend'),
+	grades = [0,1, 5, 10, 15, 20, 25, 30],
+	labels = [];
+  // label for legend
+	// label for legend
+	if (document.documentElement.lang == 'in') {
+		div.innerHTML+='Jumlah laporan&lt;BR>';
+	}
+	else {
+		div.innerHTML+='Number of reports&lt;BR>';
+	}
+	// loop through density intervals and generate label with coloured square
+	for (var i=0; i &lt;grades.length; i++) {
+		div.innerHTML += '&lt;i class="color" style="background:'+getColor(grades[i]+1) + '">&lt;/i>';
+	}
+	div.innerHTML += '&lt;br>';
+	// loop through density intervals and generate label with coloured square
+	for (i=0; i &lt;grades.length-1; i++) {
+		div.innerHTML += '&lt;span class="number">'+grades[i]+'&lt;/span>';
+	}
+	div.innerHTML +='&lt;span class="number" style="margin-left:1px;">'+grades[grades.length-1]+'+&lt;/span>';
+
+	return div;
+};
+
+//Initialise map
+var latlon = new L.LatLng(-6.26, 106.8317); //Centre Jakarta
+var map = L.map('static_map', {zoomControl:false}).setView(latlon, 11); // Initialise map
+map.attributionControl.setPrefix('');
+map.dragging.disable();
+map.touchZoom.disable();
+map.doubleClickZoom.disable();
+map.scrollWheelZoom.disable();
+if (map.tap) map.tap.disable();
+
+getAggregates('city');
+
+//Add legend
+legend.addTo(map);
+
+//Count of reports
+jQuery.getJSON("/banjir/data/api/v1/reports/count?hours=24", function(data){
+	$("#c_count").append(' '+data.data.c_count);
+	$("#uc_count").append(' '+data.data.uc_count);
+});
+
+getTimeseries();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-analytics.html">analytics</a></li><li><a href="module-map.html">map</a></li><li><a href="module-reports.html">reports</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Wed Sep 30 2015 18:41:27 GMT+1000 (AEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

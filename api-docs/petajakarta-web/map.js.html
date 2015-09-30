@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: map.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: map.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//map.js - JavaScript for PetaJakarta web map
+
+/**
+*@file LeafletJS map to display data from cognicity server (PetaJakarta.org)
+*@copyright (c) Tomas Holderness &amp; SMART Infrastructure Facility January 2014
+*@module map
+*/
+
+/**
+	Transforms a number into a formatted, comma separated string. e.g. `1234567`
+	becomes `"1,234,567"`.
+
+	@function
+	@param {number} x the number to be formatted
+*/
+var formatNumberAsString = function(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+/**
+	Add a popup to the provided layer based on the provided feature's text property
+
+	@param {object} feature - a GeoJSON feature
+	@param {L.ILayer} layer - the layer to attach the popup to
+*/
+var markerPopup = function(feature, layer) {
+	if (feature.properties) {
+		markerMap[feature.properties.pkey] = layer;
+		//Create reference list of markers
+		layer.bindPopup(feature.properties.text.parseURL());
+	}
+};
+
+/**
+	Add a text popup to the provided layer
+
+	@param {object} feature - a GeoJSON feature
+	@param {L.ILayer} layer - the layer to attach the popup to
+*/
+var uncomfirmedMarkerPopup = function(feature, layer) {
+	if (feature.properties) {
+		if (document.documentElement.lang == 'in') {
+			layer.bindPopup('Laporan belum dikonfirmasi. Twit pesanmu dengan menyebutkan @petajkt #banjir');
+		} else {
+			layer.bindPopup('Unconfirmed report. To confirm tweet @petajkt #banjir');
+		}
+	}
+};
+
+/**
+	Get a map overlay layer from the geoserver
+
+	@param {string} layer - the layer to be fetched
+	@return {L.TileLayer} layer - the layer that was fetched from the server
+*/
+var getInfrastructure = function(layer) {
+	return new RSVP.Promise(function(resolve, reject){
+		// Use live data
+		jQuery.getJSON("/banjir/data/api/v1/infrastructure/"+layer+"?format=topojson", function(data){
+				if (data.features !== null){
+					resolve(topojson.feature(data, data.objects.collection));
+				} else {
+					resolve(null);
+				}
+		});
+	});
+};
+
+/**
+	Add a text popup to the provided layer
+
+	@param {object} feature - a GeoJSON feature
+	@param {L.ILayer} layer - the layer to attach the popup to
+*/
+var infrastructureMarkerPopup = function(feature, layer){
+	if (feature.properties){
+		layer.bindPopup(feature.properties.name);
+	}
+};
+
+/**
+	Get TopoJSON representing flooding reports from the server
+
+	@param {string} type - the type of report to get: `'confirmed'` or `'uncomfirmed'`
+	@param {function} callback - a function to be called when data is finished loading
+
+	Converts TopoJson to GeoJson using topojson
+*/
+var getReports = function(type) {
+	return new RSVP.Promise(function(resolve, reject) {
+		// Use live data
+		jQuery.getJSON('/banjir/data/api/v1/reports/'+type+'?format=topojson', function(data) {
+		// Use fixture data
+		// jQuery.getJSON('http://localhost:31338/' + type + '_reports.json', function(data) {
+			if (data.features !== null){
+				//Convert topojson back to geojson for Leaflet
+				resolve(topojson.feature(data, data.objects.collection));
+			} else {
+				resolve(null);
+			}
+		});
+	});
+
+};
+
+var aggregateHours = 1;
+
+/**
+	Get GeoJSON representing counts of reports in RW polygons
+	@param {function} callback - a function to be called when data is finished loading
+	@param {level} string - administrative boundary level to load. Can be 'rw' or 'village', also passed to load function for identification
+*/
+var getAggregates = function(level) {
+	return new RSVP.Promise(function(resolve, reject) {
+		jQuery.getJSON('/banjir/data/api/v1/aggregates/live?format=topojson&amp;level='+level+'&amp;hours='+aggregateHours, function(data) {
+			resolve(topojson.feature(data, data.objects.collection));
+		});
+	});
+};
+
+/**
+	Plots confirmed points on the map as circular markers
+	@param {object} reports - a GeoJSON object containing report locations
+*/
+var loadConfirmedPoints = function(reports) {
+	if (reports) {
+		loadTable(reports); //sneaky loadTable function.
+
+		window.reportsBadge.textContent = reports.features.length;
+
+		window.confirmedPoints = L.geoJson(reports, {
+			pointToLayer: function(feature, latlng) {
+				return L.circleMarker(latlng, styleConfirmed);
+			},
+			onEachFeature: markerPopup
+		});
+  } else {
+		window.confirmedPoints = L.geoJson();
+	}
+
+	return window.confirmedPoints;
+};
+
+/**
+	Plots unconfirmed points on the map as circular markers
+
+	@param {object} reports - a GeoJSON object containing report locations
+*/
+var loadUnconfirmedPoints = function(reports) {
+	if (reports) {
+		window.unconfirmedPoints = L.geoJson(reports, {
+			pointToLayer: function (feature, latlng) {
+					return L.circleMarker(latlng, styleUnconfirmed);
+			}, onEachFeature: uncomfirmedMarkerPopup
+		});
+	} else {
+		window.unconfirmedPoints = L.geoJson();
+	}
+
+	return window.unconfirmedPoints;
+};
+
+/**
+	Plots counts of reports in RW polygons
+
+	@param {string} level - string - administrative boundary level to load. Can be 'rw' or 'village', should be passed from getfunction
+	@param {object} aggregates - a GeoJSON object containing polygon features
+*/
+
+var aggregateLayers = {};
+var aggregateVersions = {};
+var aggregateInc = 0;
+
+var loadAggregates = function(level, aggregates){
+	var aggregateLayer = L.geoJson(aggregates, {style:styleAggregates, onEachFeature:labelAggregates});
+	aggregateLayers[level] = aggregateLayer;
+	aggregateLayers[level].version = aggregateInc;
+  aggregateVersions[level] = aggregateInc;
+  aggregateInc += 1;
+	return aggregateLayers[level];
+};
+
+/**
+	Plots hydrological infrastructure on map
+
+	@param {string} layer - string - name of infrastructure layer to load
+	@param {object} infrastructure - a GeoJSON object containing infrastructure features
+*/
+
+var loadInfrastructure = function(layer, infrastructure){
+	if(infrastructure) {
+		if (layer == 'waterways'){
+			window[layer] = L.geoJson(infrastructure, {style:styleInfrastructure[layer]});
+		}
+		else {
+
+			window[layer] = L.geoJson(infrastructure, {
+				pointToLayer: function(feature, latlng) {
+					return L.marker(latlng, {icon: styleInfrastructure[layer]});
+				}, onEachFeature: infrastructureMarkerPopup
+			});
+		}
+	}
+	else {
+			window[layer] = L.geoJson();
+	}
+
+	return window[layer];
+};
+
+var styleInfrastructure = {
+
+	waterways:{
+		color:'#3960ac',
+		weight:2.5,
+		opacity:1,
+	},
+	pumps:L.icon({
+		iconUrl: '/banjir/img/pump.svg',
+		iconSize: [28,28],
+		iconAnchor: [14, 14],
+		popupAnchor: [0, 0],
+	}),
+	floodgates:L.icon({
+		iconUrl: '/banjir/img/floodgate.svg',
+		iconSize: [28,28],
+		iconAnchor: [14, 14],
+		popupAnchor: [0, 0],
+	})
+};
+
+/**
+	Styles counts of reports in RW polygons
+
+	@param {object} feature - individual Leaflet/GeoJSON feature object
+	*/
+function styleAggregates(feature) {
+    return {
+        fillColor: getColor(feature.properties.count),
+        weight: 0,
+				//disabled polygon borders for clarity
+        //opacity: 1,
+        //color: 'white',
+        //dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+
+/**
+	Return a colour based on input number - based on Color Brewer
+
+	@param {integer} d - number representing some attribute (e.g. count)
+
+*/
+function getColor(d) {
+    return d > 30 ? '#800026' :
+           d > 25  ? '#BD0026' :
+           d > 20  ? '#E31A1C' :
+           d > 15  ? '#FC4E2A' :
+           d > 10   ? '#FD8D3C' :
+           d > 5   ? '#FEB24C' :
+           d > 1   ? '#FED976' :
+					 d > 0	?	'#FFEDA0' :
+                      '#FFEDA0';
+}
+
+/**
+	Set a popup label for an aggregate poplygon based on it's count attribute
+
+	@param {object} feature - individual Leaflet/GeoJSON object
+	@param {object}	layer - leaflet layer object
+*/
+function labelAggregates(feature, layer) {
+		// commented pop up label as working on touch/info box
+    // does this feature have a property named count?
+  	/*if (feature.properties &amp;&amp; feature.properties.count &amp;&amp; feature.properties.level_name) {
+        layer.bindPopup(JSON.stringify(feature.properties.level_name+': '+feature.properties.count+' reports'));
+    }*/
+		layer.on({
+			mouseover: highlightAggregate,
+			mouseout: resetAggregate,
+      click: highlightAggregate,
+			dblclick: zoomToFeature
+		});
+}
+
+var activeAggregate = null;
+
+/**
+	Visual highlighting of polygon when hovered over with the mouse
+
+	@param {object} event - leaflet event object
+*/
+function highlightAggregate(e) {
+  var layer = e.target;
+
+  if (activeAggregate !== null) {
+    activeAggregate.setStyle(styleAggregates(activeAggregate.feature));
+    activeAggregate.bringToBack();
+  }
+
+  layer.setStyle({
+    weight: 5,
+    color: '#333',
+    opacity:1,
+    dashArray: '',
+    fillOpacity: 0.7
+  });
+
+  layer.bringToFront(); //buggy?
+
+  info.update(layer.feature.properties);
+
+  activeAggregate = layer;
+}
+/**
+	Reset style of aggregate after hover over
+
+	@param {object} event - leaflet event object
+*/
+function resetAggregate(e){
+	var layer = e.target;
+
+	layer.setStyle(styleAggregates(layer.feature));
+	layer.bringToBack();
+
+	info.update();
+}
+
+
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+		//pan to
+}
+
+/**
+	Centre the map on a given location and open a popup's text box
+
+	@param {string} pkey - the key of the marker to display
+	@param {number} lat - latitude to center on
+	@param {number} lon - longitude to center on
+*/
+var centreMapOnPopup = function(pkey,lat,lon) {
+	var m = markerMap[pkey];
+	map.setView(m._latlng, 17);
+	m.openPopup();
+};
+
+/**
+	Center the map on the user's location if they're in jakarta &amp; add a pin to show location
+
+	@param {Position} position - the user's position
+*/
+var setViewJakarta = function(position) {
+	if (position.coords.latitude >= -6.4354 &amp;&amp; position.coords.latitude &lt;= -5.9029 &amp;&amp;
+		  position.coords.longitude >= 106.5894 &amp;&amp; position.coords.longitude &lt;= 107.0782) {
+				map.setView(L.latLng(position.coords.latitude,position.coords.longitude), 17); // Set to the users current view
+
+				//Remove existing marker if present
+				if (window.bluedot){
+					map.removeLayer(window.bluedot);
+				}
+				// Add new marker
+				window.bluedot = L.marker([position.coords.latitude,position.coords.longitude]);
+				window.bluedot.addTo(map);
+	}
+};
+
+/**
+	Information box for aggregate details
+*/
+var info = L.control({'position':'topright'});
+//Create info box
+info.onAdd = function(map){
+	this.flag = 1;
+	this._div = L.DomUtil.create('div', 'info'); // Create a div with class info
+	this.update();
+	return this._div;
+};
+
+//Update info box
+
+var hover_text;
+var reports_text;
+
+if (document.documentElement.lang == 'in'){
+	hover_text = 'Arahkan ke area';
+	reports_text = 'laporan';
+}
+else {
+	hover_text = 'Hover over an area';
+	reports_text = 'reports';
+}
+
+info.update = function(properties){
+
+		this._div.innerHTML = (properties ? properties.level_name+': '+properties.count+' '+reports_text : hover_text);
+};
+
+/**
+	Legend box
+*/
+var legend = L.control({position:'bottomright'});
+
+legend.onAdd = function(map) {
+
+	var div = L.DomUtil.create('div', 'info legend'),
+	grades = [0,1, 5, 10, 15, 20, 25, 30],
+	labels = [];
+  // label for legend
+	if (document.documentElement.lang == 'in') {
+		div.innerHTML+='Jumlah laporan&lt;BR>';
+	}
+	else {
+		div.innerHTML+='Number of reports&lt;BR>';
+	}
+	// loop through density intervals and generate label with coloured square
+	for (var i=0; i &lt;grades.length; i++) {
+		div.innerHTML += '&lt;i class="color" style="background:'+getColor(grades[i]+1) + '">&lt;/i>';
+	}
+  div.innerHTML += '&lt;br>';
+	// loop through density intervals and generate label with coloured square
+	for (i=0; i &lt;grades.length-1; i++) {
+		div.innerHTML += '&lt;span class="number">'+grades[i]+'&lt;/span>';
+	}
+	div.innerHTML +='&lt;span class="number" style="margin-left:1px;">'+grades[grades.length-1]+'+&lt;/span>';
+	//div.innerHTML +='+';
+
+	return div;
+};
+
+var aggregatesControl = L.control({position:'bottomright'});
+
+var hideAggregates = function() {
+  if (aggregateLayers) {
+    if (aggregateLayers.subdistrict) {
+      map.removeLayer(aggregateLayers.subdistrict);
+      window.layerControl.removeLayer(aggregateLayers.subdistrict);
+    }
+    if (aggregateLayers.village) {
+      map.removeLayer(aggregateLayers.village);
+      window.layerControl.removeLayer(aggregateLayers.village);
+    }
+    if (aggregateLayers.rw) {
+      map.removeLayer(aggregateLayers.rw);
+      window.layerControl.removeLayer(aggregateLayers.rw);
+    }
+  }
+};
+
+var reloadAggregates = function() {
+  var promises = {
+    subdistrict: getAggregates('subdistrict')
+				.then(function(aggregates) {
+					return loadAggregates('subdistrict', aggregates);
+				}),
+    village: getAggregates('village')
+				.then(function(aggregates) {
+					return loadAggregates('village', aggregates);
+				}),
+    rw: getAggregates('rw')
+				.then(function(aggregates) {
+					return loadAggregates('rw', aggregates);
+				})
+  };
+
+  return RSVP.hash(promises);
+};
+
+var hideReports = function (){
+	map.removeLayer(window.unconfirmedPoints);
+	map.removeLayer(window.confirmedPoints);
+
+	window.layerControl.removeLayer(window.unconfirmedPoints);
+	window.layerControl.removeLayer(window.confirmedPoints);
+};
+
+// Turn layers on/off depending on zoom level
+var updateAggregateVisibility = function() {
+	var zoom  = map.getZoom();
+
+	if (zoom &lt; 13) {
+		hideReports();
+		hideAggregates();
+		aggregateLayers.subdistrict.addTo(map);
+		aggregateLayers.subdistrict.bringToBack();
+		window.layerControl.addOverlay(aggregateLayers.subdistrict, layernames.subdistrict);
+
+	} else if (zoom >= 13 &amp;&amp; zoom &lt;= 14) {
+		hideReports();
+		hideAggregates();
+		aggregateLayers.village.addTo(map);
+		aggregateLayers.village.bringToBack();
+		window.layerControl.addOverlay(aggregateLayers.village, layernames.village);
+
+	} else if (zoom >= 15 &amp;&amp; zoom &lt; 16) {
+		hideReports();
+		hideAggregates();
+		aggregateLayers.rw.addTo(map);
+		aggregateLayers.rw.bringToBack();
+		window.layerControl.addOverlay(aggregateLayers.rw, layernames.neighbourhood);
+
+		//Update legend boxes
+		info.update();
+		if (!legend._map){
+			legend.addTo(map);
+		}
+		if (!aggregatesControl._map){
+			aggregatesControl.addTo(map);
+			$('.control.aggregates button').prop('disabled', false);
+		}
+
+
+	} else if (zoom >= 16) {
+		//Turn aggregates off
+		hideAggregates();
+		//Update info box for street level
+		if (document.documentElement.lang == 'in') {
+			info._div.innerHTML = 'Jalan laporan dari jam terakhir';
+		}
+		else {
+			info._div.innerHTML = 'Street level reports from last hour';
+		}
+
+		if (legend._map){
+			map.removeControl(legend);
+		}
+		if (aggregatesControl._map){
+			map.removeControl(aggregatesControl);
+		}
+
+		// Add reports to legend at street level
+		layerControl.addOverlay(window.unconfirmedPoints, layernames.unconfirmed);
+		layerControl.addOverlay(window.confirmedPoints, layernames.confirmed);
+
+		// Turn reports on at street level
+		window.unconfirmedPoints.addTo(map);
+		window.confirmedPoints.addTo(map);
+
+	}
+	else {
+		hideAggregates();
+
+	}
+
+  activeAggregate = null;
+};
+
+aggregatesControl.onAdd = function(map) {
+	var div = L.DomUtil.create('div', 'info control aggregates');
+
+  var buttonGroup = L.DomUtil.create('div', 'btn-group', div);
+  var buttons = [];
+	var labels = [];
+	if (document.documentElement.lang == 'in'){
+		labels = ['1 jam', '3 jam', '6 jam'];
+	}
+	else {
+  	labels = ['1hr', '3hrs', '6hrs'];
+	}
+  var values = [1, 3, 6];
+
+  var clickCallback = function() {
+    $('.control.aggregates button.active').removeClass('active');
+    this.className += " active";
+    aggregateHours = parseInt(this.getAttribute('value'), 10);
+    aggregateLayers.subdistrict.foo = "bar";
+    hideAggregates();
+    reloadAggregates().then(function() {
+      updateAggregateVisibility();
+    });
+  };
+
+  for (var i = 0; i &lt; 3; i++) {
+    buttons[i] = L.DomUtil.create('button', 'btn btn-default', buttonGroup);
+    buttons[i].setAttribute('value', values[i]);
+    buttons[i].setAttribute('disabled', true);
+    buttons[i].textContent = labels[i];
+    buttons[i].addEventListener("click", clickCallback);
+  }
+
+  L.DomUtil.addClass(buttons[Math.round(aggregateHours/3)], 'active');
+	console.log(Math.round(aggregateHours/3));
+	console.log(aggregateHours);
+
+  return div;
+};
+
+var reportsControl = L.control({position:'bottomleft'});
+
+reportsControl.onAdd = function(map) {
+  var div = L.DomUtil.create('div', 'leaflet-control');
+
+	//var reportsBadge = L.DomUtil.create('span', 'badge', div);
+	//reportsBadge.textContent = "4";
+
+  var reportsLink = L.DomUtil.create('a', 'leaflet-control-reports-button', div);
+  //reportsLink.textContent = "&lt;span class='badge'>4&lt;/span>";
+  reportsLink.setAttribute('data-toggle', 'modal');
+  reportsLink.setAttribute('href', '#reportsModal');
+
+	window.reportsBadge = L.DomUtil.create('span', 'badge progress-bar-danger', reportsLink);
+	//reportsBadge.textContent = "4";
+	//console.log(reports.features.length);
+
+  return div;
+};
+
+var infoControl = L.control({position:'bottomleft'});
+
+infoControl.onAdd = function(map) {
+  var div = L.DomUtil.create('div', 'leaflet-control');
+  var infoLink = L.DomUtil.create('a', 'leaflet-control-info-button', div);
+  infoLink.textContent = "Information";
+  infoLink.setAttribute('data-toggle', 'modal');
+  infoLink.setAttribute('href', '#infoModal');
+
+  return div;
+};
+
+var locationControl = L.control({position:'bottomleft'});
+
+locationControl.onAdd = function(map){
+	var div = L.DomUtil.create('div', 'leaflet-control');
+	var locationLink = L.DomUtil.create('a', 'leaflet-control-location-button', div);
+	locationLink.textContent = 'Current Location';
+	locationLink.setAttribute('href', '#');
+	locationLink.setAttribute('onclick', 'navigator.geolocation.getCurrentPosition(setViewJakarta); return false;');
+
+	return div;
+};
+
+//Initialise map
+var latlon = new L.LatLng(-6.1924, 106.8317); //Centre Jakarta
+var map = L.map('map').setView(latlon, 12); // Initialise map
+map.attributionControl.setPrefix('');
+
+//Specify default image path for Leaflet
+L.Icon.Default.imagePath = '/banjir/css/images/';
+
+//Check user location and alter map view accordingly
+map.locate({setView:false});
+if ('geolocation' in navigator &amp;&amp; window.isTouch) {
+	navigator.geolocation.getCurrentPosition(setViewJakarta);
+}
+
+//Add info box
+info.addTo(map);
+
+//Add legend
+legend.addTo(map);
+
+//Add aggregates control
+aggregatesControl.addTo(map);
+
+// Reports control
+infoControl.addTo(map);
+reportsControl.addTo(map);
+locationControl.addTo(map);
+
+//Old Mapnik B&amp;W rendering before aggregates layer was added
+//var base0 = L.tileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png').addTo(map);
+//Using stamen toner-lite
+var base0 = L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png', {
+	//attribution: 'Map tiles by &lt;a href="http://stamen.com">Stamen Design&lt;/a>, &lt;a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0&lt;/a> &amp;mdash; Map data &amp;copy; &lt;a href="http://openstreetmap.org">OpenStreetMap&lt;/a> contributors, &lt;a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA&lt;/a>',
+	subdomains: 'abcd',
+	minZoom: 0,
+	maxZoom: 20
+}).addTo(map);
+var base1 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+
+var precip = L.tileLayer('http://{s}.tile.openweathermap.org/map/precipitation/{z}/{x}/{y}.png', {
+	attribution: 'Map data &amp;copy; &lt;a href="http://openweathermap.org">OpenWeatherMap&lt;/a>',
+	opacity: 0.5
+});
+
+var pressure = L.tileLayer('http://{s}.tile.openweathermap.org/map/pressure_cntr/{z}/{x}/{y}.png', {
+	attribution: 'Map data &amp;copy; &lt;a href="http://openweathermap.org">OpenWeatherMap&lt;/a>',
+	opacity: 0.5
+});
+
+var temp = L.tileLayer('http://{s}.tile.openweathermap.org/map/temp/{z}/{x}/{y}.png', {
+	attribution: 'Map data &amp;copy; &lt;a href="http://openweathermap.org">OpenWeatherMap&lt;/a>',
+	opacity: 0.5
+});
+
+//Ancillary layers control
+if (document.documentElement.lang == 'in') {
+	var baseMaps = {
+		"Open Street Map": base0,
+		"Open Street Map (warna)":base1
+	};
+} else {
+	var baseMaps = {
+    	"Open Street Map (B&amp;W)": base0,
+			"Open Street Map (colour)": base1
+		};
+	}
+
+var markerMap = {}; //Reference list of markers stored outside of Leaflet
+
+// Styles for confirmed and unconfirmed points
+var styleUnconfirmed = {
+    radius: 7,
+    fillColor: "#ff7800",
+    color: "#000",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.8
+};
+
+var styleConfirmed = {
+    radius: 7,
+    fillColor: "blue",
+    color: "#000",
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.8
+};
+
+// URL replacement in tweets
+String.prototype.parseURL = function() {
+	return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&amp;~\?\/.=]+/g, function(url) {
+		return "&lt;a target='_blank' href='"+url+"'>"+url+"&lt;/a>";
+	});
+};
+
+var layernames = {};
+
+if (document.documentElement.lang == 'in'){
+	layernames.confirmed = 'Laporan dikonfirmasi';
+	layernames.unconfirmed = 'Laporan belum dikonfirmasi';
+	layernames.subdistrict = 'Laporan Kecamatan';
+	layernames.village = 'Laporan Desa';
+	layernames.neighbourhood = 'Laporan RW';
+	layernames.waterways = 'Aliran Air';
+	layernames.pumps = 'Pompa Air';
+	layernames.floodgates = 'Pintu Air';
+}
+else {
+	layernames.confirmed = 'Confirmed Reports';
+	layernames.unconfirmed = 'Unconfirmed Reports';
+	layernames.subdistrict = 'Subdistrict Aggregates';
+	layernames.village = 'Village Aggregates';
+	layernames.neighbourhood = 'Neighbourhood Aggregates';
+	layernames.waterways = 'Waterways';
+	layernames.pumps = 'Pumps';
+	layernames.floodgates = 'Floodgates';
+}
+
+var loadPrimaryLayers = function(layerControl) {
+	var layerPromises = {
+		confirmed: getReports('confirmed')
+			.then(loadConfirmedPoints),
+			unconfirmed: getReports('unconfirmed')
+				.then(loadUnconfirmedPoints)};
+
+  if (!window.isTouch) {
+    layerPromises.subdistrict = getAggregates('subdistrict')
+      .then(function(aggregates) {
+        return loadAggregates('subdistrict', aggregates);
+      });
+  }
+
+	return new RSVP.Promise(function(resolve, reject) {
+		RSVP.hash(layerPromises).then(function(overlays) {
+
+      if (!window.isTouch) {
+        layerControl.addOverlay(overlays.subdistrict, layernames.subdistrict);
+        overlays.subdistrict.addTo(map);
+      }
+
+			else {
+				// Add overlays to the layers control
+				layerControl.addOverlay(overlays.confirmed, layernames.confirmed);
+				layerControl.addOverlay(overlays.unconfirmed, layernames.unconfirmed);
+
+				// Make overlays visible
+				overlays.confirmed.addTo(map);
+				overlays.unconfirmed.addTo(map);
+			}
+
+			map.spin(false);
+
+			resolve(layerControl);
+		}, reject);
+	});
+};
+
+var loadSecondaryLayers = function(layerControl) {
+	return new RSVP.Promise(function(resolve, reject) {
+		secondaryPromises = {
+			waterways: getInfrastructure('waterways')
+				.then(function(waterways){
+					return loadInfrastructure('waterways', waterways);
+				}),
+			pumps: getInfrastructure('pumps')
+				.then(function(pumps){
+					return loadInfrastructure('pumps', pumps);
+				}),
+			floodgates: getInfrastructure('floodgates')
+				.then(function(floodgates){
+					return loadInfrastructure('floodgates', floodgates);
+				})
+		};
+
+    if (!window.isTouch) {
+      _.extend(secondaryPromises, {
+      village: getAggregates('village')
+				.then(function(aggregates) {
+					return loadAggregates('village', aggregates);
+				}),
+      rw: getAggregates('rw')
+				.then(function(aggregates) {
+					return loadAggregates('rw', aggregates);
+				})
+      });
+    }
+
+		RSVP.hash(secondaryPromises).then(function(overlays) {
+			// Add overlays to the layer control
+			layerControl.addOverlay(overlays.waterways, layernames.waterways);
+			layerControl.addOverlay(overlays.pumps, layernames.pumps);
+			layerControl.addOverlay(overlays.floodgates, layernames.floodgates);
+
+			// Make overlays visible unless of touch device
+			if (!window.isTouch){
+				overlays.waterways.addTo(map);
+				overlays.pumps.addTo(map);
+				overlays.floodgates.addTo(map);
+			}
+
+      $('.control.aggregates button').prop('disabled', false);
+		});
+	});
+};
+
+// Load reports
+$(function() {
+	map.spin(true);
+	window.layerControl = L.control.layers(baseMaps, {}, {position: 'bottomleft'}).addTo(map);
+	loadPrimaryLayers(window.layerControl).then(loadSecondaryLayers);
+});
+
+
+// Hack in the symbols for reports
+if (document.documentElement.lang == 'in') {
+	$('.leaflet-control-layers-overlays').append('&lt;/div>&lt;label>&lt;div class=c>&lt;/div>&lt;span>Laporan dikonfirmasi dari jam terakhir&lt;/span>&lt;/label>&lt;label>&lt;div class=u>&lt;/div>&lt;span>Laporan belum dikonfirmasi&lt;/span>&lt;/label>');
+} else {
+	$('.leaflet-control-layers-overlays').append('&lt;label>&lt;div class=c>&lt;/div>&lt;span>Confirmed reports&lt;/span>&lt;/label>&lt;label>&lt;div class=u>&lt;/div>&lt;span>Unconfirmed reports&lt;/span>&lt;/label>');
+}
+
+
+/**
+Add user location (if in Jakarta) -> this logic moved to setViewJakarta()
+-left in for reference.
+*/
+/*
+function onLocationFound(e) {
+	var radius = e.accuracy / 2;
+
+	L.circle(e.latlng, radius).addTo(map);
+}
+
+map.on('locationfound', onLocationFound);
+*/
+
+
+/**
+	Listen for map zoom events and load required layers [non-touch devices]
+*/
+if (!window.isTouch) {
+  map.on('zoomend', updateAggregateVisibility);
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-analytics.html">analytics</a></li><li><a href="module-map.html">map</a></li><li><a href="module-reports.html">reports</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Wed Sep 30 2015 18:41:27 GMT+1000 (AEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
