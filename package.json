@@ -1,7 +1,9 @@
 {
   "name": "cognicity-web",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "imagemin-optipng": "^4.3.0"
+  },
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-cli": "^0.1.13",
@@ -16,7 +18,7 @@
     "grunt-contrib-htmlmin": "^0.2.0",
     "grunt-wiredep": "^2.0.0",
     "grunt-bower-install-simple": "^1.1.0",
-    "grunt-contrib-imagemin": "^0.6.0",
+    "grunt-contrib-imagemin": ">=0.6.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-autoprefixer": "^0.7.2",
     "grunt-usemin": "^2.1.0",

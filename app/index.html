@@ -118,34 +118,58 @@
                     <iframe src="//player.vimeo.com/video/91375861?byline=0&amp;portrait=0&amp;modestbranding=1&amp;showinfo=0&amp;autohide=1" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
             </div>
-            <div id="how-it-works" class="row">
-                <div class="col-xs-12">
-                    <h1>How CogniCity Works</h1>
-                    <p>CogniCity is split into three main projects: cognicity-server, cognicity-reports, and cognicity-web. This modular approach allows you to pick and choose what parts of the framework you wish to use, while also providing a solid foundation for adding yor own modules.</p>
+            <div class="row" id="video">
+              <div class="col-md-7">
+                <h1>CogniCity Featured in White Paper</h1>
+                <p>Read about how CogniCity was used to map flooding in real-time</p>
+                  <blockquote>
+                    <p>White Paper ‑ PetaJakarta.org: Assessing the Role of Social Media for Civic Co‑Management During Monsoon Flooding in Jakarta, Indonesia</p>
+                    <footer>Tomas Holderness & Etienne Turpin <em><a href="http://petajakarta.org/banjir/en/research" target='_blank'>ISBN: 978-1-74128-249-8</a></em></footer>
+                  </blockquote>
+                </p>
+              </div>
+              <div class="col-md-5">
+                <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">How do you crowd-map a flood? <a href="http://t.co/Nah3uSstjn">http://t.co/Nah3uSstjn</a> White Paper now available for download <a href="http://t.co/MR3ai1Ks7v">http://t.co/MR3ai1Ks7v</a> <a href="http://t.co/qokZb2YHUo">pic.twitter.com/qokZb2YHUo</a></p>&mdash; Tomas Holderness (@iHolderness) <a href="https://twitter.com/iHolderness/status/628074848086921217">August 3, 2015</a></blockquote>
+                  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+              </div>
+            </div>
 
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h2>cognicity-server</h2>
-                            <p><a href="https://github.com/smart-facility/cognicity-server">View on GitHub <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-                            <p><a href="api-docs/cognicity-server/index.html" target="cognicity-api-docs">API documentation <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></p>
-                            <p class="lead">NodeJS server for CogniCity data and web files</p>
-                            <p>cognicity-server is the central module of the CogniCity framework, providing the main database server and HTTP API. The server can additionally serve up static web content.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h2>cognicity-reports</h2>
-                            <p><a href="https://github.com/smart-facility/cognicity-reports-powertrack">View on GitHub <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-                            <p><a href="api-docs/cognicity-reports-powertrack/index.html" target="cognicity-api-docs">API documentation<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></p>
-                            <p class="lead">NodeJS app to collect unconfirmed reports from Twitter and send verification requests</p>
-                            <p>cognicity-reports interacts with the Gnip Powertrack API to gather reports in real-time. Using Twitter's location services, the reporting module can determine where an report has originated from. Additionally, the module can confirm reports by messaging their users.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h2>cognicity-web</h2>
-                            <p class="text-muted">Coming Soon</p>
-                            <p class="lead">A set of basic templates to quickly set up web-based reporting of CogniCity data</p>
-                            <p>To quickly set up web reporting of your CogniCity data, we plan to provide a set of HTML templates that replicate most of the functionality on <a href="http://petajakarta.org/banjir/in/">PetaJakarta.org</a></p>
-                        </div>
-                    </div>
-                </div>
+            <div id="how-it-works" class="row">
+
+                    <div class='col-md-5'><h1>How CogniCity Works</h1>
+                      <p>CogniCity is split into three main projects:</p>
+                      <p>
+                      <ul class="glist">
+                        <li>cognicity-server</li>
+                        <li>cognicity-reports</li>
+                        <li>cognicity-web</li>
+                      </ul>
+                    </p>
+                    <p>This modular approach allows you to pick and choose what parts of the framework you wish to use, while also providing a solid foundation for adding yor own modules.</p></div>
+                    <div class='col-md-7'><img class="img-responsive center-block" src="images/cognicity_system_diagram.png" width="500" alt=""/></a></div>
+
+                              <div class="col-md-4">
+                                  <h2>cognicity-server</h2>
+                                  <p><a href="https://github.com/smart-facility/cognicity-server">View on GitHub <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+                                  <p><a href="api-docs/cognicity-server/index.html" target="cognicity-api-docs">API documentation <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></p>
+                                  <p class="lead">NodeJS server for CogniCity data and web files</p>
+                                  <p>cognicity-server is the central module of the CogniCity framework, providing the main database server and HTTP API. The server can additionally serve up static web content.</p>
+                                  <p>The cognicity-server Data API is exposed via a HTTP/JSON interface. View the documentation at <a href="http://petajakarta.org/banjir/en/data/api/" target="_blank">http://petajakarta.org/banjir/en/data/api/</a></p>
+                              </div>
+                              <div class="col-md-4">
+                                  <h2>cognicity-reports</h2>
+                                  <p><a href="https://github.com/smart-facility/cognicity-reports-powertrack">View on GitHub <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+                                  <p><a href="api-docs/cognicity-reports-powertrack/index.html" target="cognicity-api-docs">API documentation<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></p>
+                                  <p class="lead">NodeJS app to collect crowd-sourced data via social media</p>
+                                  <p>cognicity-reports interacts with the Gnip Powertrack API to gather reports in real-time. Using Twitter's location services, the reporting module can determine where an report has originated from. Additionally, the module can confirm reports by messaging their users.</p>
+                              </div>
+                              <div class="col-md-4">
+                                  <h2>cognicity-web <small>(PetaJakarta.org)</small></h2>
+                                  <p><a href="https://github.com/smart-facility/petajakarta-web">View on GitHub <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+                                  <p><a href="api-docs/petajakarta-web/index.html" target="cognicity-api-docs">API documentation <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></p>
+                                  <p class="lead">Front-end JavaScript & HTML5 for mobile web application</p>
+                                  <p>cognicity-web is a web based app to map collected data using the LeafletJS library.</p>
+                              </div>
             </div>
             <footer id="site-footer" class="row">
                 <div class="col-md-8 col-md-offset-2 content">
