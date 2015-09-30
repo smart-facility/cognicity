@@ -81,8 +81,9 @@ We're using GitHub pages to host this site, so to publish a new build of the sit
 1. On the `master` branch, run `grunt build`
 2. Copy the resulting `dist` folder somewhere
 3. Back in the repository, switch to the `gh-pages` branch
-4. ~~Delete the contents of the repo's folder and replace them with those in `dist`~~
-5. Commit the changes and push them to `origin`
+4. Replace existing files in the repo's folder with those in `dist`
+5. Add any new files from `dist` to the `gh-pages` branch
+6. Commit the changes and push them to `origin`
 
 #### Updating API Documentation
 
