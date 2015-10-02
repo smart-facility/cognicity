@@ -81,6 +81,7 @@ body {
 }
 
 #page-intro {
+    padding-top:50px;
     padding-bottom: 20px;
     border-bottom: 1px #eee solid;
 }
@@ -101,7 +102,7 @@ body {
     border-bottom: 1px #eee solid;
 }
 
-#video {
+.item {
     padding: 20px 0;
     border-bottom: 1px #eee solid;
 
@@ -115,6 +116,18 @@ body {
             margin-bottom: 24px;
         }
     }
+}
+
+#video {
+  padding-top:55px;
+}
+
+#how-it-works {
+  padding-top:50px;
+}
+
+#github-link {
+  padding-top:60px;
 }
 
 .btn-round {
@@ -158,4 +171,8 @@ p {
     margin-top: 4px;
     margin-left: -17px;
     color: #428BCA;
+}
+
+.panel {
+  margin-top:36px;
 }

@@ -67,7 +67,7 @@
                         <li><a href="#how-it-works">How it Works</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="http://github.com/smart-facility/cognicity-server">View on GitHub</a></li>
+                        <li><a href="#github-link">View on GitHub</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -102,11 +102,12 @@
                 </div>
             </div>
             <div id="github-link">
-                <p class="lead">CogniCity is open source. It's hosted, developed, and maintained on GitHub.</p>
+                <p class="lead">CogniCity is open source. It's hosted, developed, and maintained on GitHub<sup>*</sup></p>
                 <a href="http://github.com/smart-facility/cognicity-server" class="btn btn-primary btn-lg btn-round">View the GitHub Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <BR><BR><small><sup>*</sup>Pro tip: CogniCity is aranged into separate projects <a href="#how-it-works">read more here.</a></small>
             </div>
 
-            <div class="row" id="video">
+            <div class="row item" id="video">
                 <div class="col-md-6">
                     <h1>PetaJakarta.org <small>CogniCity in Action</small></h1>
                     <p>petajakarta.org/banjir is an open source, community-led platform to collect and disseminate information about flooding and critical water infrastructure in Jakarta.</p>
@@ -118,7 +119,7 @@
                     <iframe src="//player.vimeo.com/video/91375861?byline=0&amp;portrait=0&amp;modestbranding=1&amp;showinfo=0&amp;autohide=1" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
             </div>
-            <div class="row" id="video">
+            <div class="row item">
               <div class="col-md-7">
                 <h1>CogniCity Featured in White Paper</h1>
                 <p>Read about how CogniCity was used to map flooding in real-time</p>
@@ -126,17 +127,26 @@
                     <p>White Paper ‑ PetaJakarta.org: Assessing the Role of Social Media for Civic Co‑Management During Monsoon Flooding in Jakarta, Indonesia</p>
                     <footer>Tomas Holderness & Etienne Turpin <em><a href="http://petajakarta.org/banjir/en/research" target='_blank'>ISBN: 978-1-74128-249-8</a></em></footer>
                   </blockquote>
+                  <div class="call-to-action">
+                      <a href="http://petajakarta.org/en/research" class="btn btn-primary btn-lg btn-round">Read White Paper <span class="glyphicon glyphicon-chevron-right"></span></a>
+                  </div>
                 </p>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <img class="img-responsive center-block" src="images/wp_fig06.jpg" width="500" alt=""/></img>
+                  </div>
+                  <div class="panel-footer">
+                    CogniCity's Multi-stable Cartographic Interface
+                  </div>
+                </div>
               </div>
               <div class="col-md-5">
                 <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">How do you crowd-map a flood? <a href="http://t.co/Nah3uSstjn">http://t.co/Nah3uSstjn</a> White Paper now available for download <a href="http://t.co/MR3ai1Ks7v">http://t.co/MR3ai1Ks7v</a> <a href="http://t.co/qokZb2YHUo">pic.twitter.com/qokZb2YHUo</a></p>&mdash; Tomas Holderness (@iHolderness) <a href="https://twitter.com/iHolderness/status/628074848086921217">August 3, 2015</a></blockquote>
                   <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
               </div>
             </div>
-
-            <div id="how-it-works" class="row">
-
-                    <div class='col-md-5'><h1>How CogniCity Works</h1>
+            <div id="how-it-works" class="row" style="padding-top:50px;">
+                    <div class='col-md-6'><h1>How CogniCity Works</h1>
                       <p>CogniCity is split into three main projects:</p>
                       <p>
                       <ul class="glist">
@@ -145,9 +155,11 @@
                         <li>cognicity-web</li>
                       </ul>
                     </p>
-                    <p>This modular approach allows you to pick and choose what parts of the framework you wish to use, while also providing a solid foundation for adding yor own modules.</p></div>
-                    <div class='col-md-7'><img class="img-responsive center-block" src="images/cognicity_system_diagram.png" width="500" alt=""/></a></div>
-
+                    <p>This modular approach allows you to pick and choose what parts of the framework you wish to use, while also providing a solid foundation for adding yor own modules.</p>
+                    <p>CogniCity is written in JavaScript, and uses the PostgreSQL/PostGIS database to store data. The server-side components are written using the NodeJS framework.</p>
+                    <p>Data is passed between the server and client device (map) using a RESTFul GeoJSON API.
+                    </div>
+                    <div class='col-md-6'><img class="img-responsive center-block" src="images/cognicity_system_diagram.png" width="500" alt=""/></img></div>
                               <div class="col-md-4">
                                   <h2>cognicity-server</h2>
                                   <p><a href="https://github.com/smart-facility/cognicity-server">View on GitHub <span class="glyphicon glyphicon-chevron-right"></span></a></p>
